@@ -44,6 +44,7 @@ export default {
   status: "وضعیت",
   recentTiket: "آخرین تیکت ها",
 
-  levelOne: "سطح یک"
-
+  levelOne: "سطح یک",
+  haveProblem: "لطفا بعدا تلاش کنید !",
+  addressCopid: "آدرس کپی شد",
 };

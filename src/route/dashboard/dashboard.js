@@ -103,7 +103,7 @@ export default function () {
         </div>
         <div className="col-6 grid-margin">
           <div className="card">
-            <div className="card-body" style={{ minHeight: 430 }}>
+            <div className="card-body">
               <h4 className="card-title">{t("recentTiket")}</h4>
               <div className="table-responsive">
                 <table className="table">

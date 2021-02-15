@@ -2,9 +2,10 @@ import React, { Suspense, lazy } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import useStorage from "reducer";
 
-import Spinner from "./app/shared/Spinner";
+import Spinner from "component/spinner";
 
 const Dashboard = lazy(() => import("route/dashboard/dashboard"));
+const Deposit = lazy(() => import("route/deposit/deposit"));
 const Register = lazy(() => import("route/sign/register"));
 const Activate = lazy(() => import("route/sign/activate"));
 const Login = lazy(() => import("route/sign/login"));
@@ -42,6 +43,7 @@ const AppRoutes = (props) => {
         ) : (
           <>
             <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/deposit" component={Deposit} />
             <Route path="/basic-ui/buttons" component={Buttons} />
             <Route path="/basic-ui/dropdowns" component={Dropdowns} />
             <Route path="/basic-ui/typography" component={Typography} />
@@ -57,7 +59,7 @@ const AppRoutes = (props) => {
 
             <Route path="/general-pages/blank-page" component={BlankPage} />
 
-            <Redirect to="/dashboard" />
+            {/* <Redirect to="/dashboard" /> */}
           </>
         )}
       </Switch>
