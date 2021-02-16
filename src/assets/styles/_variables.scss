@@ -40,7 +40,7 @@ $colors: (
 $theme-colors: (
   primary: #b66dff,
   secondary: #d8d8d8,
-  success: #1bcfb4,
+  success: #00b050,
   info: #198ae3,
   warning: #fed713,
   danger: #fe7c96,
@@ -51,7 +51,7 @@ $theme-colors: (
 $theme-gradient-colors: (
   primary: linear-gradient(to right, #da8cff, #9a55ff),
   secondary: linear-gradient(to right, #e7ebf0, #868e96),
-  success: linear-gradient(to right, #84d9d2, #07cdae),
+  success: linear-gradient(to right, #61b486, #00b050),
   info: linear-gradient(to right, #90caf9, #047edf 99%),
   warning: linear-gradient(to right, #f6e384, #ffd500),
   danger: linear-gradient(to right, #ffbf96, #fe7096),
@@ -260,7 +260,7 @@ $table-inverse-color: color(white);
 $border-property: 1px solid $border-color;
 $card-spacing-y: 2.5rem;
 $card-padding-y: 2rem;
-$card-padding-x: 2rem;
+$card-padding-x: 1.5rem;
 $card-border-radius: 0.3125rem;
 $grid-gutter-width: 40px;
 $action-transition-duration: 0.25s;

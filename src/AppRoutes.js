@@ -19,22 +19,19 @@ const BasicTable = lazy(() => import("./app/tables/BasicTable"));
 
 const Mdi = lazy(() => import("./app/icons/Mdi"));
 
-const ChartJs = lazy(() => import("./app/charts/ChartJs"));
-
 const Error404 = lazy(() => import("./app/error-pages/Error404"));
 const Error500 = lazy(() => import("./app/error-pages/Error500"));
 
-
 const BlankPage = lazy(() => import("./app/general-pages/BlankPage"));
 
-
 const AppRoutes = (props) => {
-  const { setting: { isLoged } } = useStorage();
+  const {
+    setting: { isLoged },
+  } = useStorage();
   return (
     <Suspense fallback={<Spinner />}>
       <Switch>
-        {!isLoged
-          ?
+        {!isLoged ? (
           <>
             <Route path="/register" component={Register} />
             <Route path="/activate" component={Activate} />
@@ -42,7 +39,7 @@ const AppRoutes = (props) => {
 
             <Redirect to="/login" />
           </>
-          :
+        ) : (
           <>
             <Route exact path="/dashboard" component={Dashboard} />
             <Route path="/basic-ui/buttons" component={Buttons} />
@@ -55,8 +52,6 @@ const AppRoutes = (props) => {
 
             <Route path="/mdi" component={Mdi} />
 
-            <Route path="/charts/chart-js" component={ChartJs} />
-
             <Route path="/error-pages/error-404" component={Error404} />
             <Route path="/error-pages/error-500" component={Error500} />
 
@@ -64,10 +59,10 @@ const AppRoutes = (props) => {
 
             <Redirect to="/dashboard" />
           </>
-        }
+        )}
       </Switch>
     </Suspense>
   );
-}
+};
 
 export default AppRoutes;

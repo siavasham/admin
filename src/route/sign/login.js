@@ -8,7 +8,6 @@ import { validateEmail } from "library/helper";
 import _ from "lodash";
 import useStorage from "reducer";
 
-
 const Login = () => {
   const { session, setSession, setSetting } = useStorage();
   const history = useHistory();
@@ -16,8 +15,8 @@ const Login = () => {
   const [error, setError] = useState({});
 
   const onChange = (name, value) => {
-    setSession({ [name]: value })
-  }
+    setSession({ [name]: value });
+  };
   const validate = () => {
     const { email, password } = session;
     const temp = {};
@@ -42,7 +41,7 @@ const Login = () => {
       post("login", { email, password }).then((data) => {
         setLoading(false);
         if (data.success) {
-          setSetting({ login: data.success })
+          setSetting({ login: data.success });
         } else if (data.error) {
           const temp = {};
           for (let i in data.error) {
@@ -57,28 +56,31 @@ const Login = () => {
     <div>
       <div className="d-flex align-items-center auth px-0">
         <div className="row w-100 mx-0">
-          <div className="col-lg-4 mx-auto">
+          <div className="col-md-7 col-lg-6 mx-auto box-max">
             <div className="auth-form-light  py-5 px-4 px-sm-5">
               <div className="brand-logo text-center">
-                <img src={require("assets/images/logo.svg")} alt="logo" />
+                <img src={require("assets/images/logo.png")} alt="logo" />
               </div>
               <h4>{t("login")}</h4>
               <form className="pt-3" autoComplete="off" onSubmit={onSubmit}>
                 <Input
                   placeholder={"email"}
                   value={session?.email}
-                  onChange={v => onChange('email', v)}
+                  onChange={(v) => onChange("email", v)}
                   error={error?.email}
                 />
                 <Input
                   type="password"
                   placeholder={"password"}
                   value={session?.password}
-                  onChange={v => onChange('password', v)}
+                  onChange={(v) => onChange("password", v)}
                   error={error?.password}
                 />
                 <div className="mt-3">
-                  <Button loading={loading} className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">
+                  <Button
+                    loading={loading}
+                    className="btn btn-block btn-success btn-lg font-weight-medium auth-form-btn"
+                  >
                     {t("login")}
                   </Button>
                 </div>
@@ -88,7 +90,10 @@ const Login = () => {
                   </Link>
                 </div>
                 <div className="text-center mt-4 font-weight-light">
-                  {t("dontHaveAccount")} <Link to="/register" className="text-primary">{t("createAccount")}</Link>
+                  {t("dontHaveAccount")}{" "}
+                  <Link to="/register" className="text-success">
+                    {t("createAccount")}
+                  </Link>
                 </div>
               </form>
             </div>
@@ -100,4 +105,3 @@ const Login = () => {
 };
 
 export default Login;
-

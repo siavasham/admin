@@ -1,30 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Breadcrumb from "component/breadcrumb";
-import { Bar, Doughnut } from "react-chartjs-2";
 import { t } from "locales";
 
 export default function () {
-  const [trafficData, setTrafficData] = useState({});
-  const [trafficOptions, setTrafficOptions] = useState({
-    responsive: true,
-    animation: {
-      animateScale: true,
-      animateRotate: true,
-    },
-    legend: false,
-  });
-  useEffect(() => {
-    setTrafficData({
-      datasets: [
-        {
-          data: [300, 30, 10],
-          backgroundColor: ["#9a55ff", "#07cdae", "#fe7096"],
-        },
-      ],
-
-      labels: [t('totalInvest'), t('totalProfit'), t('totalReferrals')],
-    });
-  }, []);
+  useEffect(() => {}, []);
   return (
     <div>
       <Breadcrumb title="dashboard" icon="mdi-home" />
@@ -72,7 +51,7 @@ export default function () {
                 alt="circle"
               />
               <h4 className="font-weight-normal mb-3">
-                {t('totalReferrals')}{" "}
+                {t("totalReferrals")}{" "}
                 <i className="mdi mdi-reply mdi-24px float-right"></i>
               </h4>
               <h2 className="mb-5">9</h2>
@@ -85,24 +64,37 @@ export default function () {
         <div className="col-md-6 grid-margin stretch-card">
           <div className="card">
             <div className="card-body">
-              <h4 className="card-title">{t('atGlance')}</h4>
-              <Doughnut data={trafficData} options={trafficOptions} />
-              <div
-                id="traffic"
-                className="rounded-legend legend-vertical legend-bottom-left pt-4"
-              >
-                <ul className="row">
-                  <li className="col-4">
-                    <span className="legend-dots bg-info"></span>{t('invest')}
-                    <div className="text-center">80%</div>
+              <h4 className="card-title">{t("atGlance")}</h4>
+              <div className="multi-graph mx-auto">
+                <div
+                  className="graph"
+                  dataName={t("totalInvest")}
+                  style={{ "--percentage": 100, "--fill": "#198ae3" }}
+                ></div>
+                <div
+                  className="graph"
+                  dataName={t("totalProfit")}
+                  style={{ "--percentage": 30, "--fill": "#00b050" }}
+                ></div>
+                <div
+                  className="graph"
+                  dataName={t("totalReferrals")}
+                  style={{ "--percentage": 20, "--fill": "#fe7096" }}
+                ></div>
+              </div>
+              <div className="rounded-legend legend-vertical legend-bottom-left pt-4 ">
+                <ul className="row ">
+                  <li className="col-4 text-center">
+                    <span className="legend-dots bg-info"></span>
+                    {t("invest")}
                   </li>
-                  <li className="col-4">
-                    <span className="legend-dots bg-success"></span>{t('profit')}
-                    <div className="text-center">30%</div>
+                  <li className="col-4 text-center">
+                    <span className="legend-dots bg-success"></span>
+                    {t("profit")}
                   </li>
-                  <li className="col-4">
-                    <span className="legend-dots bg-danger"></span>{t('referrals')}
-                    <div className="text-center">10%</div>
+                  <li className="col-4 text-center">
+                    <span className="legend-dots bg-danger "></span>
+                    {t("referrals")}
                   </li>
                 </ul>
               </div>
@@ -112,13 +104,13 @@ export default function () {
         <div className="col-6 grid-margin">
           <div className="card">
             <div className="card-body" style={{ minHeight: 430 }}>
-              <h4 className="card-title">{t('recentTiket')}</h4>
+              <h4 className="card-title">{t("recentTiket")}</h4>
               <div className="table-responsive">
                 <table className="table">
                   <thead>
                     <tr>
-                      <th> {t('subject')} </th>
-                      <th> {t('status')} </th>
+                      <th> {t("subject")} </th>
+                      <th> {t("status")} </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -127,7 +119,7 @@ export default function () {
                       <td>
                         <label className="badge badge-gradient-success">
                           DONE
-                          </label>
+                        </label>
                       </td>
                     </tr>
                     <tr>
@@ -135,7 +127,7 @@ export default function () {
                       <td>
                         <label className="badge badge-gradient-warning">
                           PROGRESS
-                          </label>
+                        </label>
                       </td>
                     </tr>
                     <tr>
@@ -143,7 +135,7 @@ export default function () {
                       <td>
                         <label className="badge badge-gradient-info">
                           ON HOLD
-                          </label>
+                        </label>
                       </td>
                     </tr>
                     <tr>
@@ -151,7 +143,7 @@ export default function () {
                       <td>
                         <label className="badge badge-gradient-danger">
                           REJECTED
-                          </label>
+                        </label>
                       </td>
                     </tr>
                   </tbody>
@@ -160,7 +152,6 @@ export default function () {
             </div>
           </div>
         </div>
-
       </div>
     </div>
   );

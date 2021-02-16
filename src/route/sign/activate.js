@@ -7,7 +7,7 @@ import OtpInput from "component/otp-input";
 import Button from "component/button";
 import { numEn } from "library/helper";
 import useStorage from "reducer";
-import Alert from 'react-bootstrap/Alert';
+import Alert from "react-bootstrap/Alert";
 
 const Activate = () => {
   const { session, setSetting } = useStorage();
@@ -31,12 +31,10 @@ const Activate = () => {
     const { name, email, password, referral } = session;
     post("auth", { name, email, password, referral }).then((data) => {
       if (data.success) {
-
       } else if (data.error) {
-
       }
     });
-  }
+  };
   const onSubmit = (e) => {
     e.preventDefault();
     if (validate() == null) {
@@ -44,7 +42,7 @@ const Activate = () => {
       post("activate", { email: session.email, code }).then((data) => {
         setLoading(false);
         if (data.success) {
-          setSetting({ login: data.success })
+          setSetting({ login: data.success });
         } else if (data.error) {
           setError(data.error);
         }
@@ -55,10 +53,10 @@ const Activate = () => {
     <div>
       <div className="d-flex align-items-center auth px-0">
         <div className="row w-100 mx-0">
-          <div className="col-lg-4 mx-auto">
+          <div className="col-md-7 col-lg-6 mx-auto box-max">
             <div className="auth-form-light  py-5 px-4 px-sm-5">
               <div className="brand-logo text-center">
-                <img src={require("assets/images/logo.svg")} alt="logo" />
+                <img src={require("assets/images/logo.png")} alt="logo" />
               </div>
               <h4>{t("code")}</h4>
               <form className="pt-3" autoComplete="off" onSubmit={onSubmit}>
@@ -78,13 +76,18 @@ const Activate = () => {
                   {t(error)}
                 </Alert>
                 <div className="mt-5">
-                  <Button loading={loading} className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">
+                  <Button
+                    loading={loading}
+                    className="btn btn-block btn-success btn-lg font-weight-medium auth-form-btn"
+                  >
                     {t("activate")}
                   </Button>
                 </div>
                 <div className="text-center mt-4 font-weight-light">
                   {t("activateNotSended")}{" "}
-                  <a href="#" className="text-primary" onClick={reSend}>{t("reSend")}</a>
+                  <a href="#" className="text-success" onClick={reSend}>
+                    {t("reSend")}
+                  </a>
                 </div>
               </form>
             </div>

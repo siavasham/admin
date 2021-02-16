@@ -22,6 +22,9 @@ body {
 .dir-rtl {
   direction: rtl;
 }
+.box-max {
+  max-width: 500px;
+}
 .page-body-wrapper {
   min-height: calc(100vh - #{$navbar-height});
   padding-top: $navbar-height;

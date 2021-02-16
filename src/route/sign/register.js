@@ -8,7 +8,6 @@ import { validateEmail } from "library/helper";
 import _ from "lodash";
 import useStorage from "reducer";
 
-
 const Register = () => {
   const { session, setSession } = useStorage();
   const history = useHistory();
@@ -16,8 +15,8 @@ const Register = () => {
   const [error, setError] = useState({});
 
   const onChange = (name, value) => {
-    setSession({ [name]: value })
-  }
+    setSession({ [name]: value });
+  };
   const validate = () => {
     const { name, email, password } = session;
     const temp = {};
@@ -60,45 +59,49 @@ const Register = () => {
     <div>
       <div className="d-flex align-items-center auth px-0">
         <div className="row w-100 mx-0">
-          <div className="col-lg-4 mx-auto">
+          <div className="col-md-7 col-lg-6  mx-auto box-max">
             <div className="auth-form-light  py-5 px-4 px-sm-5">
               <div className="brand-logo text-center">
-                <img src={require("assets/images/logo.svg")} alt="logo" />
+                <img src={require("assets/images/logo.png")} alt="logo" />
               </div>
               <h4>{t("signUp")}</h4>
               <form className="pt-3" autoComplete="off" onSubmit={onSubmit}>
                 <Input
                   placeholder={"name"}
                   value={session?.name}
-                  onChange={v => onChange('name', v)}
+                  onChange={(v) => onChange("name", v)}
                   error={error?.name}
                 />
                 <Input
                   placeholder={"email"}
                   value={session?.email}
-                  onChange={v => onChange('email', v)}
+                  onChange={(v) => onChange("email", v)}
                   error={error?.email}
+                  className="ltr"
                 />
                 <Input
                   type="password"
                   placeholder={"password"}
                   value={session?.password}
-                  onChange={v => onChange('password', v)}
+                  onChange={(v) => onChange("password", v)}
                   error={error?.password}
                 />
                 <Input
                   placeholder={"referralCode"}
                   value={session?.referral}
-                  onChange={v => onChange('referral', v)}
+                  onChange={(v) => onChange("referral", v)}
                 />
                 <div className="mt-3">
-                  <Button loading={loading} className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">
+                  <Button
+                    loading={loading}
+                    className="btn btn-block btn-success btn-lg font-weight-medium auth-form-btn"
+                  >
                     {t("signUp")}
                   </Button>
                 </div>
                 <div className="text-center mt-4 font-weight-light">
                   {t("haveAccount")}{" "}
-                  <Link to="/login" className="text-primary">
+                  <Link to="/login" className="text-success">
                     {t("login")}
                   </Link>
                 </div>
