@@ -43,9 +43,11 @@
     @include border-radius(5px);
   }
 
-  &.card-faded {
-    background: #b5b0b2;
-    border-color: #b5b0b2;
+  &.card-grey {
+    background: #e3e3e3;
+  }
+  &.card-warning {
+    background: #fde6ba;
   }
   &.card-circle-progress {
     color: $white;

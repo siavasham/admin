@@ -5,7 +5,9 @@ import { t } from "locales";
 import useStorage from "reducer";
 
 const Sidebar = (props) => {
-  const { setting: { name } } = useStorage();
+  const {
+    setting: { name },
+  } = useStorage();
   const [state, setState] = useState({});
   const location = useLocation();
 
@@ -20,7 +22,7 @@ const Sidebar = (props) => {
       });
       setState({ [menuState]: true });
     }
-  }
+  };
 
   useEffect(() => {
     onRouteChanged();
@@ -48,20 +50,17 @@ const Sidebar = (props) => {
       setState({ [i]: false });
     });
 
-    const dropdownPaths = [
-      { path: "/apps", state: "appsMenuOpen" },
-    ];
+    const dropdownPaths = [{ path: "/apps", state: "appsMenuOpen" }];
 
     dropdownPaths.forEach((obj) => {
       if (isPathActive(obj.path)) {
         setState({ [obj.state]: true });
       }
     });
-  }
+  };
   const isPathActive = (path) => {
     return location.pathname.startsWith(path);
-  }
-
+  };
 
   return (
     <nav className="sidebar sidebar-offcanvas" id="sidebar">
@@ -78,12 +77,8 @@ const Sidebar = (props) => {
               {/* change to offline or busy as needed */}
             </div>
             <div className="nav-profile-text">
-              <span className="font-weight-bold mb-2">
-                {name}
-              </span>
-              <span className="text-secondary text-small">
-                {t('levelOne')}
-              </span>
+              <span className="font-weight-bold mb-2">{name}</span>
+              <span className="text-secondary text-small">{t("levelOne")}</span>
             </div>
             <i className="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
           </a>
@@ -99,9 +94,7 @@ const Sidebar = (props) => {
           </Link>
         </li>
         <li
-          className={
-            isPathActive("/deposit") ? "nav-item active" : "nav-item"
-          }
+          className={isPathActive("/deposit") ? "nav-item active" : "nav-item"}
         >
           <Link className="nav-link" to="/deposit">
             <span className="menu-title">{t("deposit")}</span>
@@ -109,49 +102,35 @@ const Sidebar = (props) => {
           </Link>
         </li>
         <li
-          className={
-            isPathActive("/withdraw") ? "nav-item active" : "nav-item"
-          }
+          className={isPathActive("/withdraw") ? "nav-item active" : "nav-item"}
         >
           <Link className="nav-link" to="/withdraw">
             <span className="menu-title">{t("withdraw")}</span>
             <i className="mdi mdi-export menu-icon"></i>
           </Link>
         </li>
-        <li
-          className={
-            isPathActive("/finance") ? "nav-item active" : "nav-item"
-          }
-        >
-          <Link className="nav-link" to="/finance">
-            <span className="menu-title">{t("finance")}</span>
+        <li className={isPathActive("/plans") ? "nav-item active" : "nav-item"}>
+          <Link className="nav-link" to="/plans">
+            <span className="menu-title">{t("plans")}</span>
             <i className="mdi mdi mdi-calculator menu-icon"></i>
           </Link>
         </li>
         <li
-          className={
-            isPathActive("/referral") ? "nav-item active" : "nav-item"
-          }
+          className={isPathActive("/referral") ? "nav-item active" : "nav-item"}
         >
           <Link className="nav-link" to="/referral">
             <span className="menu-title">{t("referral")}</span>
             <i className="mdi mdi-reply menu-icon"></i>
           </Link>
         </li>
-        <li
-          className={
-            isPathActive("/tiket") ? "nav-item active" : "nav-item"
-          }
-        >
+        <li className={isPathActive("/tiket") ? "nav-item active" : "nav-item"}>
           <Link className="nav-link" to="/tiket">
             <span className="menu-title">{t("tiket")}</span>
             <i className="mdi mdi-message-text menu-icon"></i>
           </Link>
         </li>
         <li
-          className={
-            isPathActive("/candle") ? "nav-item active" : "nav-item"
-          }
+          className={isPathActive("/candle") ? "nav-item active" : "nav-item"}
         >
           <Link className="nav-link" to="/candle">
             <span className="menu-title">{t("candle")}</span>
@@ -159,9 +138,7 @@ const Sidebar = (props) => {
           </Link>
         </li>
         <li
-          className={
-            isPathActive("/profile") ? "nav-item active" : "nav-item"
-          }
+          className={isPathActive("/profile") ? "nav-item active" : "nav-item"}
         >
           <Link className="nav-link" to="/profile">
             <span className="menu-title">{t("profile")}</span>
@@ -557,9 +534,6 @@ const Sidebar = (props) => {
       </ul>
     </nav>
   );
-
-
-
-}
+};
 
 export default withRouter(Sidebar);

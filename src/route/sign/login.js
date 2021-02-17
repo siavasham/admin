@@ -18,7 +18,7 @@ const Login = () => {
     setSession({ [name]: value });
   };
   const validate = () => {
-    const { email, password } = session;
+    const { email = "", password = "" } = session;
     const temp = {};
     if (!validateEmail(email)) {
       temp["email"] = "validation.email";
@@ -57,21 +57,21 @@ const Login = () => {
       <div className="d-flex align-items-center auth px-0">
         <div className="row w-100 mx-0">
           <div className="col-md-7 col-lg-6 mx-auto box-max">
-            <div className="auth-form-light  py-5 px-4 px-sm-5">
+            <div className="auth-form-light  py-4 px-4 px-sm-5">
               <div className="brand-logo text-center">
                 <img src={require("assets/images/logo.png")} alt="logo" />
               </div>
-              <h4>{t("login")}</h4>
+              {/* <h4>{t("login")}</h4> */}
               <form className="pt-3" autoComplete="off" onSubmit={onSubmit}>
                 <Input
-                  placeholder={"email"}
+                  name={"email"}
                   value={session?.email}
                   onChange={(v) => onChange("email", v)}
                   error={error?.email}
                 />
                 <Input
                   type="password"
-                  placeholder={"password"}
+                  name={"password"}
                   value={session?.password}
                   onChange={(v) => onChange("password", v)}
                   error={error?.password}

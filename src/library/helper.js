@@ -1,7 +1,3 @@
-export const strip = (html) => {
-  var doc = new DOMParser().parseFromString(html, "text/html");
-  return doc.body.textContent || "";
-};
 export function numEn(input) {
   if (input == undefined) return;
   var returnModel = "",
@@ -73,4 +69,15 @@ export function num(txt) {
   if (typeof txt == "string") ret = txt.replace(/[^\d\.]*/g, "");
   else ret = txt;
   return parseInt(ret);
+}
+export function query(param) {
+  let xquery = window.location.search.substring(1);
+  let vars = xquery.split("&");
+  for (let i = 0; i < vars.length; i++) {
+    let pair = vars[i].split("=");
+    if (pair[0] == param) {
+      return pair[1];
+    }
+  }
+  return false;
 }

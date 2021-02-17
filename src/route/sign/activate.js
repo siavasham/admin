@@ -54,11 +54,11 @@ const Activate = () => {
       <div className="d-flex align-items-center auth px-0">
         <div className="row w-100 mx-0">
           <div className="col-md-7 col-lg-6 mx-auto box-max">
-            <div className="auth-form-light  py-5 px-4 px-sm-5">
+            <div className="auth-form-light  py-4 px-4 px-sm-5">
               <div className="brand-logo text-center">
                 <img src={require("assets/images/logo.png")} alt="logo" />
               </div>
-              <h4>{t("code")}</h4>
+              {/* <h4>{t("code")}</h4> */}
               <form className="pt-3" autoComplete="off" onSubmit={onSubmit}>
                 <p>{t("codeSendedToEmail")}</p>
                 <div className="mt-5 mb-5 dir-ltr align-content-center">

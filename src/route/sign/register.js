@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { t } from "locales";
 import Button from "component/button";
 import { post } from "library/request";
 import Input from "component/input";
-import { validateEmail } from "library/helper";
+import { validateEmail, query } from "library/helper";
 import _ from "lodash";
 import useStorage from "reducer";
 
@@ -13,12 +13,17 @@ const Register = () => {
   const history = useHistory();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({});
-
+  const Ref = query("ref");
+  useEffect(() => {
+    if (Ref) {
+      setSession({ referral: Ref });
+    }
+  }, []);
   const onChange = (name, value) => {
     setSession({ [name]: value });
   };
   const validate = () => {
-    const { name, email, password } = session;
+    const { name = "", email = "", password = "" } = session;
     const temp = {};
     if (name.length < 5) {
       temp["name"] = "validation.min";
@@ -60,20 +65,20 @@ const Register = () => {
       <div className="d-flex align-items-center auth px-0">
         <div className="row w-100 mx-0">
           <div className="col-md-7 col-lg-6  mx-auto box-max">
-            <div className="auth-form-light  py-5 px-4 px-sm-5">
+            <div className="auth-form-light  py-4 px-4 px-sm-5">
               <div className="brand-logo text-center">
                 <img src={require("assets/images/logo.png")} alt="logo" />
               </div>
-              <h4>{t("signUp")}</h4>
+              {/* <h4>{t("signUp")}</h4> */}
               <form className="pt-3" autoComplete="off" onSubmit={onSubmit}>
                 <Input
-                  placeholder={"name"}
+                  name={"name"}
                   value={session?.name}
                   onChange={(v) => onChange("name", v)}
                   error={error?.name}
                 />
                 <Input
-                  placeholder={"email"}
+                  name={"email"}
                   value={session?.email}
                   onChange={(v) => onChange("email", v)}
                   error={error?.email}
@@ -81,16 +86,18 @@ const Register = () => {
                 />
                 <Input
                   type="password"
-                  placeholder={"password"}
+                  name={"password"}
                   value={session?.password}
                   onChange={(v) => onChange("password", v)}
                   error={error?.password}
                 />
-                <Input
-                  placeholder={"referralCode"}
-                  value={session?.referral}
-                  onChange={(v) => onChange("referral", v)}
-                />
+                {!Ref && (
+                  <Input
+                    name={"referralCode"}
+                    value={session?.referral}
+                    onChange={(v) => onChange("referral", v)}
+                  />
+                )}
                 <div className="mt-3">
                   <Button
                     loading={loading}
