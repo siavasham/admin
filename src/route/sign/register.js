@@ -23,7 +23,7 @@ const Register = () => {
     setSession({ [name]: value });
   };
   const validate = () => {
-    const { name = "", email = "", password = "" } = session;
+    const { name = "", email = "", password = "", referral = "" } = session;
     const temp = {};
     if (name.length < 5) {
       temp["name"] = "validation.min";

@@ -9,6 +9,9 @@ const axiosBase = setup({
   validateStatus: function () {
     return true;
   },
+  cache: {
+    maxAge: 1000,
+  },
 });
 
 export const get = async (path, opt) => {
@@ -35,6 +38,7 @@ export const post = async (path, items, opt) => {
       header.cache = {
         maxAge: 10 * 60 * 1000,
       };
+      console.log("ok");
     }
     let form = new FormData();
     for (let key in items) {
