@@ -4,7 +4,7 @@ import { t } from "locales";
 export default function ({ type = "text", name, value, onChange, error }) {
   return (
     <div className={"form-group " + (error ? "has-danger" : "")}>
-      <label for={name}>{t(name)}</label>
+      <label htmlFor={name}>{t(name)}</label>
       <input
         id={name}
         name={name}

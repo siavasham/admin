@@ -1,6 +1,7 @@
-import React from 'react';
+import React from "react";
 
 const Footer = () => {
+  return null;
   return (
     <footer className="footer">
       <div className="d-sm-flex justify-content-center justify-content-sm-between py-2">
@@ -9,7 +10,6 @@ const Footer = () => {
       </div>
     </footer>
   );
-
-}
+};
 
 export default Footer;

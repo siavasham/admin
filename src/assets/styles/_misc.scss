@@ -70,6 +70,7 @@ body {
   background: $content-bg;
   padding: 1.75rem 1.5rem;
   width: 100%;
+  position: relative;
   @include flex-grow(1);
 }
 

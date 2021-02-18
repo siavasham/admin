@@ -30,7 +30,7 @@ const Navbar = (props) => {
           <img src={require("assets/images/logo.png")} alt="logo" />
         </Link>
         <Link className="navbar-brand brand-logo-mini" to="/">
-          <img src={require("assets/images/logo-mini.svg")} alt="logo" />
+          <img src={require("assets/images/favicon.png")} alt="logo" />
         </Link>
       </div>
       <div className="navbar-menu-wrapper d-flex align-items-stretch">
@@ -46,10 +46,10 @@ const Navbar = (props) => {
             <Dropdown alignRight>
               <Dropdown.Toggle className="nav-link">
                 <div className="nav-profile-img">
-                  <img
+                  {/* <img
                     src={require("assets/images/faces/face1.jpg")}
                     alt="user"
-                  />
+                  /> */}
                   <span className="availability-status online"></span>
                 </div>
                 <div className="nav-profile-text">
@@ -94,11 +94,11 @@ const Navbar = (props) => {
                   onClick={(evt) => evt.preventDefault()}
                 >
                   <div className="preview-thumbnail">
-                    <img
+                    {/* <img
                       src={require("assets/images/faces/face4.jpg")}
                       alt="user"
                       className="profile-pic"
-                    />
+                    /> */}
                   </div>
                   <div className="preview-item-content d-flex align-items-start flex-column justify-content-center">
                     <h6 className="preview-subject ellipsis mb-1 font-weight-normal">
@@ -115,11 +115,11 @@ const Navbar = (props) => {
                   onClick={(evt) => evt.preventDefault()}
                 >
                   <div className="preview-thumbnail">
-                    <img
+                    {/* <img
                       src={require("assets/images/faces/face2.jpg")}
                       alt="user"
                       className="profile-pic"
-                    />
+                    /> */}
                   </div>
                   <div className="preview-item-content d-flex align-items-start flex-column justify-content-center">
                     <h6 className="preview-subject ellipsis mb-1 font-weight-normal">
@@ -136,11 +136,11 @@ const Navbar = (props) => {
                   onClick={(evt) => evt.preventDefault()}
                 >
                   <div className="preview-thumbnail">
-                    <img
+                    {/* <img
                       src={require("assets/images/faces/face3.jpg")}
                       alt="user"
                       className="profile-pic"
-                    />
+                    /> */}
                   </div>
                   <div className="preview-item-content d-flex align-items-start flex-column justify-content-center">
                     <h6 className="preview-subject ellipsis mb-1 font-weight-normal">

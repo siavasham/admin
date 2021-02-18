@@ -5,7 +5,7 @@ import AppRoutes from "AppRoutes";
 import Sidebar from "component/sidebar";
 
 import Navbar from "component/navbar";
-import SettingsPanel from "app/shared/SettingsPanel";
+// import SettingsPanel from "app/shared/SettingsPanel";
 import Footer from "component/footer";
 import { withTranslation } from "react-i18next";
 import useStorage from "reducer";
@@ -30,7 +30,6 @@ const App = (props) => {
       "/register",
       "/error-404",
       "/error-500",
-      "/landing-page",
     ];
     for (let i = 0; i < fullPageLayoutRoutes.length; i++) {
       if (location.pathname === fullPageLayoutRoutes[i]) {
@@ -54,7 +53,7 @@ const App = (props) => {
 
   let navbarComponent = !state.isFullPageLayout ? <Navbar /> : "";
   let sidebarComponent = !state.isFullPageLayout ? <Sidebar /> : "";
-  let SettingsPanelComponent = !state.isFullPageLayout ? <SettingsPanel /> : "";
+  // let SettingsPanelComponent = !state.isFullPageLayout ? <SettingsPanel /> : "";
   let footerComponent = !state.isFullPageLayout ? <Footer /> : "";
   return (
     <div className="container-scroller">
@@ -64,7 +63,7 @@ const App = (props) => {
         <div className="main-panel">
           <div className="content-wrapper">
             <AppRoutes />
-            {SettingsPanelComponent}
+            {/* {SettingsPanelComponent} */}
           </div>
           {footerComponent}
         </div>
