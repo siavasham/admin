@@ -25,7 +25,7 @@ export default function () {
   };
   useEffect(() => {
     setLoading(true);
-    get("coins").then((res) => {
+    get("coins", { cache: true }).then((res) => {
       if (res?.success) {
         setCoins(res.success);
       } else {

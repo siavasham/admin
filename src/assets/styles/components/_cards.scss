@@ -2,6 +2,8 @@
 
 .card {
   border: 0;
+  background-color: $card-bg-varient;
+
   .card-body {
     padding: $card-padding-y $card-padding-x;
     @media (max-width: 767px) {

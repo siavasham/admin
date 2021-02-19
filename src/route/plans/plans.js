@@ -13,7 +13,7 @@ export default function () {
   const [active, setActive] = useState("BTC");
   useEffect(() => {
     setLoading(true);
-    get("plans").then((res) => {
+    get("plans", { cache: true }).then((res) => {
       if (res?.success) {
         setPlans(res.success);
       } else {
@@ -21,7 +21,7 @@ export default function () {
       }
       setLoading(false);
     });
-    get("coins").then((res) => {
+    get("coins", { cache: true }).then((res) => {
       if (res?.success) {
         setCoins(res.success);
       }

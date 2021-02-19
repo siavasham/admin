@@ -234,12 +234,12 @@ const Navbar = (props) => {
               </Dropdown.Menu>
             </Dropdown>
           </li>
-          <li className="nav-item nav-logout d-none d-lg-block">
+          <li className="nav-item nav-logout">
             <a className="nav-link" href="#" onClick={logOut}>
               <i className="mdi mdi-power"></i>
             </a>
           </li>
-          <li className="nav-item nav-settings d-none d-lg-block">
+          <li className="nav-item nav-settings d-none">
             <button
               type="button"
               className="nav-link border-0"

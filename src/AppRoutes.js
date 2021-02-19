@@ -54,7 +54,7 @@ const AppRoutes = (props) => {
   } = useStorage();
   const list = route[isLoged ? "home" : "sign"];
   const isRoute = list.find((e) => e.item == location.pathname);
-  console.log(location);
+
   return (
     <Suspense fallback={<Spinner />}>
       <Switch>
