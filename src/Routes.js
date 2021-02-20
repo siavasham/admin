@@ -15,12 +15,14 @@ const Deposit = lazy(() => import("route/deposit/deposit"));
 const Plans = lazy(() => import("route/plans/plans"));
 const Referral = lazy(() => import("route/referral/referral"));
 const Candle = lazy(() => import("route/candle/candle"));
+const Profile = lazy(() => import("route/profile/profile"));
 const Ticket = lazy(() => import("route/ticket/ticket"));
 const NewTicket = lazy(() => import("route/ticket/newTicket"));
 const ViewTicket = lazy(() => import("route/ticket/viewTicket"));
 const Register = lazy(() => import("route/sign/register"));
 const Activate = lazy(() => import("route/sign/activate"));
 const Login = lazy(() => import("route/sign/login"));
+const Forget = lazy(() => import("route/sign/forget"));
 
 const route = {
   home: [
@@ -30,6 +32,7 @@ const route = {
     { path: "/referral", component: Referral },
     { path: "/candle", component: Candle },
     { path: "/ticket", component: Ticket },
+    { path: "/profile", component: Profile },
     { path: "/ticket/new", component: NewTicket },
     { path: "/ticket/view/:id", component: ViewTicket },
   ],
@@ -37,6 +40,7 @@ const route = {
     { path: "/register", component: Register },
     { path: "/activate", component: Activate },
     { path: "/login", component: Login },
+    { path: "/forget", component: Forget },
   ],
 };
 const AppRoutes = (props) => {

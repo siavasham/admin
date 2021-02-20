@@ -22,7 +22,7 @@ export default function () {
         <div className="col-12 grid-margin stretch-card">
           <div className="card">
             <div className="card-body" style={{ height: "70vh" }}>
-              <div className="d-sm-flex pb-4 mb-4 border-bottom">
+              <div className="d-sm-flex pb-4 mb-4">
                 <ul className="nav nav-pills nav-pills-custom w-100">
                   {coins?.map((coin, i) =>
                     coin.name == "USDT" ? null : (

@@ -5,6 +5,7 @@
   height: calc(100vh - #{$navbar-height} - 5.5rem);
   position: fixed;
   width: calc(100% - #{$sidebar-width-lg} - 4rem);
+  z-index: 9999;
   @media (max-width: 991px) {
     width: 100%;
   }

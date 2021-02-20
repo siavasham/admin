@@ -5,14 +5,32 @@ export default function ({
   type = "text",
   name,
   multiLine = false,
+  data = null,
   value,
   onChange,
   error,
+  ...rest
 }) {
   return (
     <div className={"form-group " + (error ? "has-danger" : "")}>
       <label htmlFor={name}>{t(name)}</label>
-      {!multiLine ? (
+      {data ? (
+        <select
+          id={name}
+          name={name}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          className={
+            "form-control form-control-lg " +
+            (error ? "form-control-danger" : "")
+          }
+          {...rest}
+        >
+          {data.map((val, i) => (
+            <option value={val}> {t(val)}</option>
+          ))}
+        </select>
+      ) : !multiLine ? (
         <input
           id={name}
           name={name}
@@ -25,6 +43,7 @@ export default function ({
             "form-control form-control-lg " +
             (error ? "form-control-danger" : "")
           }
+          {...rest}
         />
       ) : (
         <textarea
@@ -38,6 +57,7 @@ export default function ({
             (error ? "form-control-danger" : "")
           }
           rows={5}
+          {...rest}
         />
       )}
       <label className="error mt-2 text-danger">

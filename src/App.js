@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { withRouter, useLocation } from "react-router-dom";
 import "assets/styles/app.scss";
-import AppRoutes from "AppRoutes";
+import AppRoutes from "Routes";
 import Sidebar from "component/sidebar";
-
 import Navbar from "component/navbar";
 // import SettingsPanel from "app/shared/SettingsPanel";
 import Footer from "component/footer";
-import { withTranslation } from "react-i18next";
 import useStorage from "reducer";
 
 const App = (props) => {
@@ -32,6 +30,7 @@ const App = (props) => {
       "/login",
       "/activate",
       "/register",
+      "/forget",
       "/error-404",
       "/error-500",
     ];
@@ -76,4 +75,4 @@ const App = (props) => {
   );
 };
 
-export default withTranslation()(withRouter(App));
+export default withRouter(App);
