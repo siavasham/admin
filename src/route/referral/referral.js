@@ -40,7 +40,7 @@ export default function () {
               <h4 className="card-title pb-3">{t("yourReferral")}</h4>
               <p className="card-description">{t("referralHelp")}</p>
               <div className="row">
-                <div className="col-12 col-md-6 mt-2 mb-2">
+                <div className="col-12 col-md-6">
                   <label>{t("refLink")}</label>
                   <div className="input-group">
                     <div className="input-group-prepend cursor-pointer">
@@ -59,7 +59,7 @@ export default function () {
                     />
                   </div>
                 </div>
-                <div className="col-12 col-md-6 mb-3">
+                <div className="col-12 col-md-6">
                   <label>{t("refCode")}</label>
                   <div className="input-group">
                     <div className="input-group-prepend cursor-pointer">

@@ -9,7 +9,7 @@ export default function () {
       <Breadcrumb title="dashboard" icon="mdi-home" />
       <div className="row">
         <div className="col-md-4 stretch-card grid-margin">
-          <div className="card bg-gradient-primary card-img-holder text-white">
+          <div className="card bg-gradient-primary card-img-holder text-white overflow-hidden">
             <div className="card-body">
               <img
                 src={require("assets/images/dashboard/circle.svg")}
@@ -26,7 +26,7 @@ export default function () {
           </div>
         </div>
         <div className="col-md-4 stretch-card grid-margin">
-          <div className="card  bg-gradient-success card-img-holder text-white">
+          <div className="card  bg-gradient-success card-img-holder text-white  overflow-hidden">
             <div className="card-body">
               <img
                 src={require("assets/images/dashboard/circle.svg")}
@@ -43,7 +43,7 @@ export default function () {
           </div>
         </div>
         <div className="col-md-4 stretch-card grid-margin">
-          <div className="card bg-gradient-danger card-img-holder text-white">
+          <div className="card bg-gradient-danger card-img-holder text-white  overflow-hidden">
             <div className="card-body">
               <img
                 src={require("assets/images/dashboard/circle.svg")}
