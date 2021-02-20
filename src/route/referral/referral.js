@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import Breadcrumb from "component/breadcrumb";
 import { t } from "locales";
 import { post } from "library/request";
-import Spinner from "component/spinner";
 import InfoBox from "component/infobox";
 import Clipboard from "react-clipboard.js";
 import Alert from "react-bootstrap/Alert";
+import useTimeAgo from "library/timeAgo";
 import useStorage from "reducer";
 
 export default function () {
@@ -14,7 +14,7 @@ export default function () {
   const {
     setting: { name, token },
   } = useStorage();
-
+  const timeAgo = useTimeAgo();
   const address = window.location.origin + "/register?ref=" + name;
   const onCopy = () => {
     setCopid(true);
@@ -40,7 +40,7 @@ export default function () {
               <h4 className="card-title pb-3">{t("yourReferral")}</h4>
               <p className="card-description">{t("referralHelp")}</p>
               <div className="row">
-                <div className="col-6">
+                <div className="col-12 col-md-6 mt-2 mb-2">
                   <label>{t("refLink")}</label>
                   <div className="input-group">
                     <div className="input-group-prepend cursor-pointer">
@@ -52,14 +52,14 @@ export default function () {
                       ></Clipboard>
                     </div>
                     <input
-                      value={address}
+                      defaultValue={address}
                       dir="auto"
                       type="text"
                       className="form-control form-control"
                     />
                   </div>
                 </div>
-                <div className="col-6">
+                <div className="col-12 col-md-6 mb-3">
                   <label>{t("refCode")}</label>
                   <div className="input-group">
                     <div className="input-group-prepend cursor-pointer">
@@ -71,7 +71,7 @@ export default function () {
                       ></Clipboard>
                     </div>
                     <input
-                      value={name}
+                      defaultValue={name}
                       dir="auto"
                       type="text"
                       className="form-control form-control"
@@ -99,20 +99,20 @@ export default function () {
               <div className="card-body">
                 <h4 className="card-title pb-3">{t("yourRefers")}</h4>
                 {referrals.map((ref, i) => (
-                  <div class="row" key={i}>
-                    <div class="col d-flex">
-                      <div class="wrapper pl-3">
-                        <p class="mb-0 font-weight-medium text-muted">
+                  <div className="row tickets-card" key={i}>
+                    <div className="col d-flex mt-2 mb-2">
+                      <div className="nowrap pl-3">
+                        <p className="mb-2 font-weight-medium text-muted">
                           {t("userName")}
                         </p>
-                        <h4 class="font-weight-semibold mb-0">
+                        <h4 className="font-weight-semibold mb-0 text-primary">
                           {ref.referral}
                         </h4>
                       </div>
                     </div>
-                    <div class="col d-flex">
-                      <div class="wrapper pl-3">
-                        <p class="mb-0 font-weight-medium text-muted">
+                    <div className="col d-flex mt-2 mb-2">
+                      <div className="nowrap pl-3">
+                        <p className="mb-2 font-weight-medium text-muted">
                           {t("invested")}
                         </p>
                         <label
@@ -125,24 +125,24 @@ export default function () {
                         </label>
                       </div>
                     </div>
-                    <div class="col d-flex">
-                      <div class="wrapper pl-3">
-                        <p class="mb-0 font-weight-medium text-muted">
+                    <div className="col d-flex mt-2 mb-2">
+                      <div className="nowrap pl-3">
+                        <p className="mb-2 font-weight-medium text-muted">
                           {t("profit")}
                         </p>
-                        <h4 class="font-weight-semibold mb-0">
+                        <h4 className="font-weight-semibold mb-0">
                           {t(ref.profit)}
                         </h4>
                       </div>
                     </div>
-                    <div class="col d-flex">
-                      <div class="wrapper pl-3">
-                        <p class="mb-0 font-weight-medium text-muted">
+                    <div className="col d-flex mt-2 mb-2">
+                      <div className="nowrap pl-3">
+                        <p className="mb-2 font-weight-medium text-muted">
                           {t("joinDate")}
                         </p>
-                        <h4 class="font-weight-semibold mb-0 text-primary">
-                          49.65%
-                        </h4>
+                        <span className="font-weight-semibold mb-0">
+                          {timeAgo.format(new Date(ref.created_at).getTime())}
+                        </span>
                       </div>
                     </div>
                   </div>

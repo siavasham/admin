@@ -11,7 +11,7 @@ import { withTranslation } from "react-i18next";
 import useStorage from "reducer";
 
 const App = (props) => {
-  const { app } = useStorage();
+  const { setSetting } = useStorage();
   const [state, setState] = useState({});
   const location = useLocation();
   useEffect(() => {
@@ -19,7 +19,11 @@ const App = (props) => {
     body.classList.add("rtl");
     // body.classList.remove("rtl");
     // i18n.changeLanguage("en");
-
+    window.addEventListener("message", (event) => {
+      if ("login" in event.data) {
+        setSetting(null);
+      }
+    });
     window.scrollTo(0, 0);
   }, []);
   useEffect(() => {

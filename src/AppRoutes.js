@@ -15,6 +15,7 @@ const Dashboard = lazy(() => import("route/dashboard/dashboard"));
 const Deposit = lazy(() => import("route/deposit/deposit"));
 const Plans = lazy(() => import("route/plans/plans"));
 const Referral = lazy(() => import("route/referral/referral"));
+const Ticket = lazy(() => import("route/ticket/ticket"));
 const Register = lazy(() => import("route/sign/register"));
 const Activate = lazy(() => import("route/sign/activate"));
 const Login = lazy(() => import("route/sign/login"));
@@ -39,6 +40,7 @@ const route = {
     { path: "/deposit", component: Deposit },
     { path: "/plans", component: Plans },
     { path: "/referral", component: Referral },
+    { path: "/ticket", component: Ticket },
   ],
   sign: [
     { path: "/register", component: Register },

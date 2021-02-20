@@ -123,9 +123,11 @@ const Sidebar = (props) => {
             <i className="mdi mdi-reply menu-icon"></i>
           </Link>
         </li>
-        <li className={isPathActive("/tiket") ? "nav-item active" : "nav-item"}>
-          <Link className="nav-link" to="/tiket">
-            <span className="menu-title">{t("tiket")}</span>
+        <li
+          className={isPathActive("/ticket") ? "nav-item active" : "nav-item"}
+        >
+          <Link className="nav-link" to="/ticket">
+            <span className="menu-title">{t("ticket")}</span>
             <i className="mdi mdi-message-text menu-icon"></i>
           </Link>
         </li>

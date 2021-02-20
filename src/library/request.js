@@ -38,7 +38,6 @@ export const post = async (path, items, opt) => {
       header.cache = {
         maxAge: 10 * 60 * 1000,
       };
-      console.log("ok");
     }
     let form = new FormData();
     for (let key in items) {
@@ -46,6 +45,9 @@ export const post = async (path, items, opt) => {
     }
     const res = axiosBase.post(path, form, header);
     const { data } = await res;
+    if (data?.login) {
+      window.postMessage({ login: true }, "*");
+    }
     return data;
   } catch (error) {
     window.postMessage({ notify: ["error", "try-later"] }, "*");

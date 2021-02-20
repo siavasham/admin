@@ -4,7 +4,7 @@ export default {
   withdraw: "برداشت",
   plans: "پلن های سرمایه گذاری",
   referral: "دعوت از دوستان",
-  tiket: "تیکت ها",
+  ticket: "تیکت ها",
   candle: "نمودار قیمت ها",
   profile: "پروفایل",
 
@@ -42,7 +42,7 @@ export default {
   atGlance: "در یک نگاه",
   subject: "موضوع",
   status: "وضعیت",
-  recentTiket: "آخرین تیکت ها",
+  recentTicket: "آخرین تیکت ها",
 
   levelOne: "سطح یک",
   haveProblem: "لطفا بعدا تلاش کنید !",
@@ -77,4 +77,13 @@ export default {
   userName: "نام کاربر",
   invested: "سپرده گذاری کرده",
   joinDate: "تاریخ عضویت",
+
+  addTicket: "افزودن تیکت",
+  open: "باز",
+  done: "بسته شده",
+  "on-hold": "در انتظار",
+  progress: " در جریان",
+  rejected: "رد شده",
+  date: "تاریخ",
+  tikcktTitle: "عنوان تیکت",
 };
