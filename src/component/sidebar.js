@@ -136,7 +136,7 @@ const Sidebar = (props) => {
         >
           <Link className="nav-link" to="/candle">
             <span className="menu-title">{t("candle")}</span>
-            <i className="mdi mdi mdi-chart-line menu-icon"></i>
+            <i className="mdi mdi-chart-line menu-icon"></i>
           </Link>
         </li>
         <li

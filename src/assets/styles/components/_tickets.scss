@@ -80,7 +80,9 @@
   color: $body-color;
   transition-duration: 0.3s;
   transition-property: "background";
-
+  &:hover > * {
+    text-decoration: none;
+  }
   .tickets-details {
     .wrapper {
       display: flex;

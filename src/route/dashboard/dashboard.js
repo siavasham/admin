@@ -1,9 +1,30 @@
 import React, { useState, useEffect } from "react";
 import Breadcrumb from "component/breadcrumb";
 import { t } from "locales";
+import { post } from "library/request";
+import useStorage from "reducer";
+
+const types = {
+  open: "badge-gradient-success",
+  progress: "badge-gradient-warning",
+  "on-hold": "badge-gradient-info",
+  done: "badge-gradient-dark",
+  rejected: "badge-gradient-danger",
+};
 
 export default function () {
-  useEffect(() => {}, []);
+  const [tickets, setTickets] = useState([]);
+  const {
+    setting: { token },
+  } = useStorage();
+
+  useEffect(() => {
+    post("tickets", { token }, { cache: true }).then((res) => {
+      if (res?.success) {
+        setTickets(res.success);
+      }
+    });
+  }, []);
   return (
     <div>
       <Breadcrumb title="dashboard" icon="mdi-home" />
@@ -101,6 +122,7 @@ export default function () {
             </div>
           </div>
         </div>
+
         <div className="col-6 grid-margin">
           <div className="card">
             <div className="card-body">
@@ -114,38 +136,16 @@ export default function () {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td> Fund is not recieved </td>
-                      <td>
-                        <label className="badge badge-gradient-success">
-                          DONE
-                        </label>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td> High loading time </td>
-                      <td>
-                        <label className="badge badge-gradient-warning">
-                          PROGRESS
-                        </label>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td> Website down for one week </td>
-                      <td>
-                        <label className="badge badge-gradient-info">
-                          ON HOLD
-                        </label>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td> Loosing control on server </td>
-                      <td>
-                        <label className="badge badge-gradient-danger">
-                          REJECTED
-                        </label>
-                      </td>
-                    </tr>
+                    {tickets?.map((ticket, i) => (
+                      <tr key={i}>
+                        <td>{ticket.title} </td>
+                        <td>
+                          <label className={"badge " + types[ticket.status]}>
+                            {t(ticket.status)}
+                          </label>
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>

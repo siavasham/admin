@@ -6,6 +6,7 @@ import useTimeAgo from "library/timeAgo";
 import useStorage from "reducer";
 import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
+import { Link } from "react-router-dom";
 
 const types = ["open", "progress", "on-hold", "done", "rejected"];
 export default function () {
@@ -26,6 +27,7 @@ export default function () {
       }
     });
   }, []);
+
   return (
     <div>
       <Breadcrumb title="ticket" icon="mdi-message-text" />
@@ -33,10 +35,10 @@ export default function () {
         <div className="col-12 grid-margin stretch-card">
           <div className="card">
             <div className="card-body">
-              <div class="d-sm-flex pb-4 mb-4 border-bottom">
-                <button type="submit" class="btn btn-gradient-success p-3">
+              <div className="d-sm-flex pb-4 mb-4 border-bottom">
+                <Link className="btn btn-gradient-success p-3" to="/ticket/new">
                   {t("addTicket")}
-                </button>
+                </Link>
               </div>
               <Tab.Container defaultActiveKey="open">
                 <Nav variant="pills" className="tickets-tab-switch">
@@ -44,7 +46,9 @@ export default function () {
                     <Nav.Item key={i} className="nowrap">
                       <Nav.Link eventKey={type}>
                         {t(type)}
-                        <div class="badge">{tickets?.[type]?.length ?? 0} </div>
+                        <div className="badge">
+                          {tickets?.[type]?.length ?? 0}{" "}
+                        </div>
                       </Nav.Link>
                     </Nav.Item>
                   ))}
@@ -54,32 +58,34 @@ export default function () {
                   {types.map((type, i) => (
                     <Tab.Pane eventKey={type} key={i}>
                       {tickets?.[type]?.map((ticket, i) => (
-                        <div className="row tickets-card" key={i}>
-                          <div className="col d-flex mt-2 mb-2">
-                            <div className="nowrap">
-                              <p className="tickets-details col-lg-8">
-                                <p className="mb-2 font-weight-medium text-muted">
-                                  {t("tikcktTitle")}
+                        <Link key={i} to={"/ticket/view/" + ticket.id}>
+                          <div className="row tickets-card">
+                            <div className="col d-flex mt-2 mb-2">
+                              <div className="nowrap">
+                                <p className="tickets-details col-lg-8">
+                                  <p className="mb-2 font-weight-medium text-muted">
+                                    {t("tikcktTitle")}
+                                  </p>
+                                  <h6 className="font-weight-semibold mb-0 text-primary">
+                                    {ticket.title}
+                                  </h6>
                                 </p>
-                                <h6 className="font-weight-semibold mb-0 text-primary">
-                                  {ticket.title}
-                                </h6>
-                              </p>
+                              </div>
+                            </div>
+                            <div className="ticket-float col-lg-2 col-sm-6">
+                              <div className="nowrap">
+                                <p className="mb-2 font-weight-medium text-muted">
+                                  {t("date")}
+                                </p>
+                                <span className="font-weight-semibold mb-0">
+                                  {timeAgo.format(
+                                    new Date(ticket.created_at).getTime()
+                                  )}
+                                </span>
+                              </div>
                             </div>
                           </div>
-                          <div className="ticket-float col-lg-2 col-sm-6">
-                            <div className="nowrap">
-                              <p className="mb-2 font-weight-medium text-muted">
-                                {t("date")}
-                              </p>
-                              <span className="font-weight-semibold mb-0">
-                                {timeAgo.format(
-                                  new Date(ticket.created_at).getTime()
-                                )}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
+                        </Link>
                       ))}
                     </Tab.Pane>
                   ))}

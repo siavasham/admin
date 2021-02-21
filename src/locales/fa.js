@@ -29,6 +29,7 @@ export default {
   "to-many-try": "لطفا بعدا تلاش کنید !",
   "code-is-used": "این کد قبلا استفاده شده است",
   "invalid-code": "کد وارد شده اشتباه است",
+  "wrong-user-pass": "نام کاربری یا کلمه عبور اشتباه است",
   forgetPassword: "رمز عبور را فراموش کردم !",
   dontHaveAccount: "حساب کاربری ندارید‌؟",
   createAccount: "ایجاد کنید",
@@ -86,4 +87,8 @@ export default {
   rejected: "رد شده",
   date: "تاریخ",
   tikcktTitle: "عنوان تیکت",
+  tikcktText: "توضیحات",
+  replay: "پاسخ",
+  submit: "ارسال",
+  successTicket: "تیکت با موقیت ارسال شد",
 };

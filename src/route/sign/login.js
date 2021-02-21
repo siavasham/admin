@@ -7,12 +7,14 @@ import Input from "component/input";
 import { validateEmail } from "library/helper";
 import _ from "lodash";
 import useStorage from "reducer";
+import Alert from "react-bootstrap/Alert";
 
 const Login = () => {
   const { session, setSession, setSetting } = useStorage();
   const history = useHistory();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({});
+  const [resError, setResError] = useState(null);
 
   const onChange = (name, value) => {
     setSession({ [name]: value });
@@ -43,11 +45,14 @@ const Login = () => {
         if (data.success) {
           setSetting({ login: data.success });
         } else if (data.error) {
-          const temp = {};
-          for (let i in data.error) {
-            temp[i] = [i, data.error[i][0]];
+          if (typeof data.error == "string") setResError(data.error);
+          else {
+            const temp = {};
+            for (let i in data.error) {
+              temp[i] = [i, data.error[i][0]];
+            }
+            setError(temp);
           }
-          setError(temp);
         }
       });
     }
@@ -76,6 +81,9 @@ const Login = () => {
                   onChange={(v) => onChange("password", v)}
                   error={error?.password}
                 />
+                <Alert variant="danger" show={!!resError}>
+                  {t(resError)}
+                </Alert>
                 <div className="mt-3">
                   <Button
                     loading={loading}

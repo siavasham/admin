@@ -6,33 +6,21 @@ import {
   useHistory,
   useLocation,
 } from "react-router-dom";
-import useStorage from "reducer";
 
+import useStorage from "reducer";
 import Spinner from "component/spinner";
-import { useEffect } from "react";
 
 const Dashboard = lazy(() => import("route/dashboard/dashboard"));
 const Deposit = lazy(() => import("route/deposit/deposit"));
 const Plans = lazy(() => import("route/plans/plans"));
 const Referral = lazy(() => import("route/referral/referral"));
+const Candle = lazy(() => import("route/candle/candle"));
 const Ticket = lazy(() => import("route/ticket/ticket"));
+const NewTicket = lazy(() => import("route/ticket/newTicket"));
+const ViewTicket = lazy(() => import("route/ticket/viewTicket"));
 const Register = lazy(() => import("route/sign/register"));
 const Activate = lazy(() => import("route/sign/activate"));
 const Login = lazy(() => import("route/sign/login"));
-
-// const Buttons = lazy(() => import("./app/basic-ui/Buttons"));
-// const Dropdowns = lazy(() => import("./app/basic-ui/Dropdowns"));
-// const Typography = lazy(() => import("./app/basic-ui/Typography"));
-
-// const BasicElements = lazy(() => import("./app/form-elements/BasicElements"));
-
-// const BasicTable = lazy(() => import("./app/tables/BasicTable"));
-
-// const Mdi = lazy(() => import("./app/icons/Mdi"));
-
-// const Error404 = lazy(() => import("./app/error-pages/Error404"));
-// const Error500 = lazy(() => import("./app/error-pages/Error500"));
-// const BlankPage = lazy(() => import("./app/general-pages/BlankPage"));
 
 const route = {
   home: [
@@ -40,7 +28,10 @@ const route = {
     { path: "/deposit", component: Deposit },
     { path: "/plans", component: Plans },
     { path: "/referral", component: Referral },
+    { path: "/candle", component: Candle },
     { path: "/ticket", component: Ticket },
+    { path: "/ticket/new", component: NewTicket },
+    { path: "/ticket/view/:id", component: ViewTicket },
   ],
   sign: [
     { path: "/register", component: Register },
