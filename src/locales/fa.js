@@ -1,7 +1,7 @@
 export default {
   dashboard: "داشبرد",
-  deposit: "سپرده گذاری",
-  withdraw: "برداشت",
+  wallet: "کیف پول",
+  transaction: "برداشت",
   plans: "پلن های سرمایه گذاری",
   referral: "دعوت از دوستان",
   ticket: "تیکت ها",
@@ -59,6 +59,9 @@ export default {
   recentTicket: "آخرین تیکت ها",
 
   levelOne: "سطح یک",
+  balance: "موجودی",
+  withdraw: "برداشت",
+  deposit: "انتقال",
   haveProblem: "لطفا بعدا تلاش کنید !",
   addressCopid: "آدرس کپی شد",
   depositInfo:

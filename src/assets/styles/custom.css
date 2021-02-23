@@ -97,33 +97,34 @@
 
 .BTC {
   background-color: #f7931a;
-  -webkit-mask: url(../images/crypto/BTC-alt.svg) no-repeat center;
-  mask: url(../images/crypto/BTC-alt.svg) no-repeat center;
+  -webkit-mask: url(../images/crypto/BTC.svg) no-repeat center;
+  mask: url(../images/crypto/BTC.svg) no-repeat center;
 }
 .BCH {
   background-color: #76ce1e;
-  -webkit-mask: url(../images/crypto/BCH-alt.svg) no-repeat center;
-  mask: url(../images/crypto/BCH-alt.svg) no-repeat center;
+  transform: rotate(-15deg);
+  -webkit-mask: url(../images/crypto/BTC.svg) no-repeat center;
+  mask: url(../images/crypto/BTC.svg) no-repeat center;
 }
 .ETH {
   background-color: #282828;
-  -webkit-mask: url(../images/crypto/ETH-alt.svg) no-repeat center;
-  mask: url(../images/crypto/ETH-alt.svg) no-repeat center;
+  -webkit-mask: url(../images/crypto/ETH.svg) no-repeat center;
+  mask: url(../images/crypto/ETH.svg) no-repeat center;
 }
 .DOGE {
   background-color: #ba9f33;
-  -webkit-mask: url(../images/crypto/DOGE-alt.svg) no-repeat center;
-  mask: url(../images/crypto/DOGE-alt.svg) no-repeat center;
+  -webkit-mask: url(../images/crypto/DOGE.svg) no-repeat center;
+  mask: url(../images/crypto/DOGE.svg) no-repeat center;
 }
 .DASH {
   background-color: #1c75bc;
-  -webkit-mask: url(../images/crypto/DASH-alt.svg) no-repeat center;
-  mask: url(../images/crypto/DASH-alt.svg) no-repeat center;
+  -webkit-mask: url(../images/crypto/DASH.svg) no-repeat center;
+  mask: url(../images/crypto/DASH.svg) no-repeat center;
 }
 .LTC {
   background-color: #838383;
-  -webkit-mask: url(../images/crypto/LTC-alt.svg) no-repeat center;
-  mask: url(../images/crypto/LTC-alt.svg) no-repeat center;
+  -webkit-mask: url(../images/crypto/LTC.svg) no-repeat center;
+  mask: url(../images/crypto/LTC.svg) no-repeat center;
 }
 .USDT {
   background-color: #2ca07a;
@@ -131,8 +132,8 @@
   mask: url(../images/crypto/USDT-alt.svg) no-repeat center;
 }
 .coin {
-  width: 100%;
-  height: 100px;
+  width: 4rem;
+  height: 4rem;
   mask-size: contain;
   margin: auto;
 }

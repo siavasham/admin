@@ -11,7 +11,7 @@ import useStorage from "reducer";
 import Spinner from "component/spinner";
 
 const Dashboard = lazy(() => import("route/dashboard/dashboard"));
-const Deposit = lazy(() => import("route/deposit/deposit"));
+const Wallet = lazy(() => import("route/wallet/wallet"));
 const Plans = lazy(() => import("route/plans/plans"));
 const Referral = lazy(() => import("route/referral/referral"));
 const Candle = lazy(() => import("route/candle/candle"));
@@ -27,7 +27,7 @@ const Forget = lazy(() => import("route/sign/forget"));
 const route = {
   home: [
     { path: "/dashboard", component: Dashboard },
-    { path: "/deposit", component: Deposit },
+    { path: "/wallet", component: Wallet },
     { path: "/plans", component: Plans },
     { path: "/referral", component: Referral },
     { path: "/candle", component: Candle },

@@ -3,19 +3,25 @@ import Breadcrumb from "component/breadcrumb";
 import Modal from "react-bootstrap/Modal";
 import Coin from "./coin";
 import { t } from "locales";
-import { get } from "library/request";
+import { post } from "library/request";
 import { QRCode } from "react-qr-svg";
 import Clipboard from "react-clipboard.js";
 import Alert from "react-bootstrap/Alert";
 import Spinner from "component/spinner";
 import InfoBox from "component/infobox";
+import useStorage from "reducer";
 
 export default function () {
   const [coins, setCoins] = useState([]);
+  const [wallet, setWallet] = useState({});
   const [data, setData] = useState(null);
   const [copid, setCopid] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+
+  const {
+    setting: { name, token },
+  } = useStorage();
 
   const onCopy = () => {
     setCopid(true);
@@ -25,9 +31,14 @@ export default function () {
   };
   useEffect(() => {
     setLoading(true);
-    get("coins", { cache: true }).then((res) => {
+    post("wallet", { token }).then((res) => {
       if (res?.success) {
-        setCoins(res.success);
+        let temp = {};
+        for (let i of res.success.wallet) {
+          temp[i.coin] = i;
+        }
+        setWallet(temp);
+        setCoins(res.success.coins);
       } else {
         setError(true);
       }
@@ -37,13 +48,22 @@ export default function () {
 
   return (
     <div>
-      <Breadcrumb title="deposit" icon="mdi-import" />
+      <Breadcrumb title="deposit" icon="mdi-wallet" />
       {loading && <Spinner forDiv />}
       {error && <InfoBox title={t("noData")} />}
       <div className="row">
         {coins?.map((coin, i) => (
-          <div key={i} className={"col-md-3 col-sm-6 mb-4 "}>
-            <Coin coin={coin} onData={setData} />
+          <div
+            key={i}
+            className={
+              "col-xl-3 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card"
+            }
+          >
+            <Coin
+              coin={coin}
+              wallet={wallet?.[coin.name] ?? {}}
+              onData={setData}
+            />
           </div>
         ))}
       </div>

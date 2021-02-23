@@ -94,21 +94,21 @@ const Sidebar = (props) => {
           </Link>
         </li>
         <li
-          className={isPathActive("/deposit") ? "nav-item active" : "nav-item"}
+          className={isPathActive("/wallet") ? "nav-item active" : "nav-item"}
         >
-          <Link className="nav-link" to="/deposit">
-            <span className="menu-title">{t("deposit")}</span>
-            <i className="mdi mdi-import menu-icon"></i>
+          <Link className="nav-link" to="/wallet">
+            <span className="menu-title">{t("wallet")}</span>
+            <i className="mdi mdi mdi-wallet menu-icon"></i>
           </Link>
         </li>
-        <li
+        {/* <li
           className={isPathActive("/withdraw") ? "nav-item active" : "nav-item"}
         >
           <Link className="nav-link" to="/withdraw">
             <span className="menu-title">{t("withdraw")}</span>
             <i className="mdi mdi-export menu-icon"></i>
           </Link>
-        </li>
+        </li> */}
         <li className={isPathActive("/plans") ? "nav-item active" : "nav-item"}>
           <Link className="nav-link" to="/plans">
             <span className="menu-title">{t("plans")}</span>
