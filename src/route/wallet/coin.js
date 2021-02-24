@@ -5,6 +5,7 @@ import { post } from "library/request";
 import { toMoney } from "library/helper";
 import Alert from "react-bootstrap/Alert";
 import useStorage from "reducer";
+import { Link } from "react-router-dom";
 
 export default function ({ coin, wallet, onData }) {
   const {
@@ -29,7 +30,6 @@ export default function ({ coin, wallet, onData }) {
     });
   };
   useEffect(() => {}, []);
-  console.log(coin);
   return (
     <div className="card card-statistics">
       <div className="card-body">
@@ -51,15 +51,12 @@ export default function ({ coin, wallet, onData }) {
           </div>
         </div>
         <div className="d-flex mt-5">
-          <button type="button" class="btn btn-outline-primary btn-block">
+          <Link
+            to={"wallet/" + coin.name}
+            class="btn btn-outline-primary btn-block"
+          >
             {t("deposit")} {wallet.balance && " / " + t("withdraw")}
-          </button>
-        </div>
-        {loading && <Spinner forDiv />}
-        <div className="inline-absolute text-center">
-          <Alert variant="danger" bsPrefix="alert alert-fill" show={error}>
-            {t("haveProblem")}
-          </Alert>
+          </Link>
         </div>
       </div>
     </div>

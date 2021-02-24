@@ -39,7 +39,7 @@ export default function () {
               />
               <h4 className="font-weight-normal mb-3">
                 {t("totalInvest")}{" "}
-                <i className="mdi  mdi-import mdi-24px float-right"></i>
+                <i className="mdi  mdi-import mdi-24px float-left"></i>
               </h4>
               <h2 className="mb-5">$ 15,0000</h2>
               <h6 className="card-text">Increased by 60%</h6>
@@ -56,7 +56,7 @@ export default function () {
               />
               <h4 className="font-weight-normal mb-3">
                 {t("totalProfit")}{" "}
-                <i className="mdi mdi-diamond-outline mdi-24px float-right"></i>
+                <i className="mdi mdi-diamond-outline mdi-24px float-left"></i>
               </h4>
               <h2 className="mb-5">45,6334</h2>
               <h6 className="card-text">Decreased by 10%</h6>
@@ -73,7 +73,7 @@ export default function () {
               />
               <h4 className="font-weight-normal mb-3">
                 {t("totalReferrals")}{" "}
-                <i className="mdi mdi-reply mdi-24px float-right"></i>
+                <i className="mdi mdi-reply mdi-24px float-left"></i>
               </h4>
               <h2 className="mb-5">9</h2>
               <h6 className="card-text">Increased by 5%</h6>

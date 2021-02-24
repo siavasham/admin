@@ -1,7 +1,7 @@
 export default {
   dashboard: "داشبرد",
   wallet: "کیف پول",
-  transaction: "برداشت",
+  transaction: "تراکنش ها",
   plans: "پلن های سرمایه گذاری",
   referral: "دعوت از دوستان",
   ticket: "تیکت ها",
@@ -49,7 +49,7 @@ export default {
 
   invest: "سپرده ",
   totalInvest: "مبلغ سپرده سرمایه گذاری",
-  profit: "سود سپرده",
+  profit: "سود بدست آمده",
   totalProfit: "مبلغ سود سپرده",
   referrals: "دعوت شده ها",
   totalReferrals: "نفرات دعوت شده",
@@ -60,8 +60,14 @@ export default {
 
   levelOne: "سطح یک",
   balance: "موجودی",
+  freezed: "مسدود شده",
+  withdrawable: "قابل برداشت",
   withdraw: "برداشت",
   deposit: "انتقال",
+  walletAddress: "آدرس ولت مقصد",
+  amount: "مقدار",
+  withdrawAndDeposit: "برداشت / انتقال",
+  withdrawRequest: "درخواست برداشت",
   haveProblem: "لطفا بعدا تلاش کنید !",
   addressCopid: "آدرس کپی شد",
   depositInfo:

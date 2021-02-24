@@ -18,9 +18,9 @@ const App = (props) => {
     // body.classList.remove("rtl");
     // i18n.changeLanguage("en");
     window.addEventListener("message", (event) => {
-      // if ("login" in event?.data) {
-      //   setSetting(null);
-      // }
+      if (event?.data?.login) {
+        setSetting(null);
+      }
     });
     window.scrollTo(0, 0);
   }, []);

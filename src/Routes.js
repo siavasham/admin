@@ -12,6 +12,7 @@ import Spinner from "component/spinner";
 
 const Dashboard = lazy(() => import("route/dashboard/dashboard"));
 const Wallet = lazy(() => import("route/wallet/wallet"));
+const WalletMng = lazy(() => import("route/wallet/manage"));
 const Plans = lazy(() => import("route/plans/plans"));
 const Referral = lazy(() => import("route/referral/referral"));
 const Candle = lazy(() => import("route/candle/candle"));
@@ -28,6 +29,7 @@ const route = {
   home: [
     { path: "/dashboard", component: Dashboard },
     { path: "/wallet", component: Wallet },
+    { path: "/wallet/:coin", component: WalletMng },
     { path: "/plans", component: Plans },
     { path: "/referral", component: Referral },
     { path: "/candle", component: Candle },
