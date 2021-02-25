@@ -3,7 +3,7 @@
 .auth {
   height: 100%;
   .auth-form-light {
-    background: $white;
+    background: $card-bg-varient;
     select {
       color: $input-placeholder-color;
     }
@@ -53,8 +53,9 @@
       }
       .form-control {
         background: transparent;
-        border-radius: 0;
+        border-radius: $btn-border-radius;
         font-size: 0.9375rem;
+        color: $black;
       }
     }
     .auth-form-btn {

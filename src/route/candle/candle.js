@@ -21,7 +21,7 @@ export default function () {
       <div className="row">
         <div className="col-12 grid-margin stretch-card">
           <div className="card">
-            <div className="card-body" style={{ height: "70vh" }}>
+            <div className="card-body" style={{ minHeight: 450 }}>
               <div className="d-sm-flex pb-4 mb-4">
                 <ul className="nav nav-pills nav-pills-custom w-100">
                   {coins?.map((coin, i) =>
@@ -31,7 +31,7 @@ export default function () {
                           type="button"
                           onClick={() => setActive(coin.name)}
                           className={
-                            "btn btn-rounded btn-" +
+                            "btn mb-2 btn-rounded btn-" +
                             (active == coin.name ? "primary" : "dark")
                           }
                         >
@@ -42,7 +42,12 @@ export default function () {
                   )}
                 </ul>
               </div>
-              <TradingViewWidget symbol={active + "USDT"} autosize />
+              <div className="d-flex" style={{ minHeight: 300 }}>
+                <TradingViewWidget
+                  symbol={active + "USDT"}
+                  theme={Themes.DARK}
+                />
+              </div>
             </div>
           </div>
         </div>

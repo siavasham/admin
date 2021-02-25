@@ -1,8 +1,7 @@
-$donutChartColors: #f83e5b, #7ac36a, #5a9bd4, #faa75b, #a368d5, #ce7058, #d77fb4,
-  #620cac;
+$donutChartColors: #b66dff, #00b050, #fe7c96, #faa75b, #198ae3, #fed713, #d77fb4;
 
 .DonutChart {
-  width: 12.25rem;
+  width: 65%;
   margin: 0.5em;
 }
 .DonutChart-range {
@@ -13,12 +12,16 @@ $donutChartColors: #f83e5b, #7ac36a, #5a9bd4, #faa75b, #a368d5, #ce7058, #d77fb4
 }
 
 .DonutChart-path {
+  transition: all 0.3s ease;
+  transform-origin: center center;
   @for $i from 1 through length($donutChartColors) {
     &:nth-child(#{$i}) {
       fill: nth($donutChartColors, $i);
     }
   }
-
+  &:hover {
+    transform: scale(1.03);
+  }
   &.DonutChart-path--empty {
     fill: #ccc;
   }
@@ -40,13 +43,15 @@ DonutChart-value {
 }
 
 .DonutChart-label {
-  fill: #777;
-  font-size: 2rem;
+  fill: $text-muted;
+  font-size: 1.5rem;
   line-height: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 .DonutChart-value {
-  font-size: 2.5rem;
+  fill: $body-color;
+  font-size: 2rem;
   line-height: 2rem;
   font-weight: bold;
 }

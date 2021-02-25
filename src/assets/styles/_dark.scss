@@ -65,7 +65,7 @@ $theme-gradient-colors: (
 $content-bg: transparent;
 $footer-bg: $content-bg;
 $footer-color: color(dark);
-$border-color: #cfd6e7;
+$border-color: #7d7a7a;
 $circle-border: $white;
 
 ////////// COLOR VARIABLES //////////
@@ -90,23 +90,23 @@ $social-colors: (
 ////////// FONTS//
 
 $type1: "iranyekan", "Ubuntu", sans-serif;
-$body-background: #1d193a;
+$body-background: #1f1e23;
 
 $font-weight-light: 300;
 $font-weight-medium: 500;
 $font-weight-bold: 700;
 
-$default-font-size: 0.875rem; // 14px as base font size
+$default-font-size: 0.775rem; // 14px as base font size
 
-$text-muted: #ddd;
-$body-color: #fff;
+$text-muted: #999;
+$body-color: #ccc;
 
 ////////// FONT VARIABLES //////////
 
 ///////// CARD ////////
 $card-description-color: #ddd;
 $card-title-color: $body-color;
-$card-bg-varient: #221d45;
+$card-bg-varient: #2b2c31;
 ///////// CARD ////////
 
 ////////// SIDEBAR ////////
@@ -114,7 +114,7 @@ $sidebar-width-lg: 260px;
 $sidebar-width-mini: 185px;
 $sidebar-width-icon: 70px;
 
-$sidebar-light-bg: #221d45;
+$sidebar-light-bg: #2b2c31;
 $sidebar-light-menu-color: #fff;
 $sidebar-light-submenu-color: #888;
 $sidebar-light-menu-active-bg: $white;
@@ -165,7 +165,7 @@ $icon-only-menu-bg-dark: $sidebar-dark-bg;
 ///////// NAVBAR ////////
 
 $navbar-height: 70px;
-$navbar-bg: #221d45;
+$navbar-bg: #2b2c31;
 $navbar-menu-color: #fff;
 $navbar-font-size: 0.875rem;
 $navbar-icon-font-size: 1.25rem;
@@ -212,7 +212,7 @@ $tooltip-border-radius: 0.375rem;
 
 /////////  FORMS /////////
 
-$input-bg: color(white);
+$input-bg: color(gray-lightest);
 $input-border-radius: 2px;
 $input-placeholder-color: #999;
 $input-font-size: 0.8125rem;
@@ -262,7 +262,7 @@ $border-property: 1px solid $border-color;
 $card-spacing-y: 2.5rem;
 $card-padding-y: 2rem;
 $card-padding-x: 1.5rem;
-$card-border-radius: 2rem;
+$card-border-radius: 0.3125rem;
 $grid-gutter-width: 40px;
 $action-transition-duration: 0.25s;
 $action-transition-timing-function: ease;

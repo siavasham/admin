@@ -4,7 +4,7 @@ export default function ({ title, icon }) {
   return (
     <div className="page-header">
       <h3 className="page-title">
-        <span className="page-title-icon bg-gradient-primary text-white mr-2">
+        <span className="page-title-icon bg-gradient-primary text-black mr-2">
           <i className={"mdi " + icon}></i>
         </span>{" "}
         {t(title)}{" "}

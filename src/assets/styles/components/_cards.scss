@@ -47,12 +47,15 @@
 
   &.card-grey {
     background: #e3e3e3;
+    color: #333;
   }
   &.card-info {
-    background: #cddae6;
+    background: #9ab7d2;
+    color: #333;
   }
   &.card-warning {
     background: #fde6ba;
+    color: #333;
   }
   &.card-circle-progress {
     color: $white;

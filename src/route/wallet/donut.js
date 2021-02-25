@@ -1,15 +1,43 @@
 import React, { useState, useEffect } from "react";
 import DonutChart from "component/donut";
 import { t } from "locales";
+import exactMath from "exact-math";
+
 const list = [
-  { text: "balance", icon: "mdi-bank" },
-  { text: "freezed", icon: "mdi-shield-outline" },
-  { text: "profit", icon: "mdi-diamond-outline" },
+  { text: "balance", type: "primary" },
+  { text: "profit", type: "success" },
+  { text: "referral", type: "danger" },
 ];
-export default (props) => {
-  const handleSelected = (props) => {
-    console.log(props);
+export default ({ wallet }) => {
+  const handleSelected = (item) => {
+    setSelected(item);
   };
+  const allAmount = exactMath.add(
+    wallet?.balance,
+    wallet?.profit,
+    wallet?.referral
+  );
+  const series = [
+    {
+      label: t("balance"),
+      value: wallet.referral,
+      data: wallet.balance,
+      selected: false,
+    },
+    {
+      label: t("profit"),
+      value: wallet.referral,
+      data: wallet.profit,
+      selected: false,
+    },
+    {
+      label: t("referral"),
+      value: wallet.referral,
+      data: wallet.referral,
+      selected: false,
+    },
+  ];
+  const [selected, setSelected] = useState(series[0]);
   return (
     <div className="card">
       <div className="card-body text-center">
@@ -18,31 +46,35 @@ export default (props) => {
           width={300}
           chartWidth={12.25}
           outerRadius={0.95}
-          outerRadiusHover={2}
+          outerRadiusHover={20}
           innerRadius={0.85}
-          innerRadiusHover={0.85}
+          innerRadiusHover={8}
           emptyWidth={0.06}
-          startAngle={0}
-          defaultLabel={t("balance")}
-          onSelected={(item) => {}}
-          defaultValue="$0.3"
-          total={0.4}
-          series={[
-            {
-              label: t("balance"),
-              value: "0.3",
-              data: 0.3,
-              selected: false,
-            },
-            {
-              label: t("freezed"),
-              value: "$0.1",
-              data: 0.1,
-              selected: false,
-            },
-          ]}
+          startAngle={-45}
+          defaultLabel={selected?.label}
+          defaultValue={selected?.value}
+          total={allAmount}
+          series={series}
           onSelected={handleSelected}
         />
+        <div
+          id="traffic-chart-legend"
+          className="rounded-legend legend-vertical legend-bottom-left pt-4"
+        >
+          <ul>
+            {list.map((item, i) => (
+              <li key={i} className="d-flex justify-content-between py-2">
+                <span>
+                  <span className={"legend-dots bg-" + item.type}></span>
+                  {t(item.text)}
+                </span>
+                <span className="float-left">
+                  {Math.round((wallet[item.text] / allAmount) * 100)}%
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

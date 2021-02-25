@@ -81,6 +81,10 @@
     }
   }
 }
+.card-col:last-child {
+  border-right: 0 !important;
+  border-left: 0 !important;
+}
 .card-revenue-table {
   .revenue-item {
     border-bottom: 1px solid $border-color;

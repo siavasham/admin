@@ -11,6 +11,8 @@ export default (props) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({});
   const [success, setSuccess] = useState(false);
+  const [resError, setResError] = useState(null);
+
   const {
     setting: { token },
   } = useStorage();
@@ -40,51 +42,62 @@ export default (props) => {
     e.preventDefault();
     if (validate() == null) {
       setLoading(true);
-      post("withdraw", { ...data, token }).then((data) => {
+      post("withdraw", { ...data, token, coin: props.coin }).then((data) => {
         setLoading(false);
         if (data.success) {
+          setSuccess(true);
         } else if (data.error) {
-          setError(data.error);
+          if (typeof data.error == "string") setResError(data.error);
+          else {
+            const temp = {};
+            for (let i in data.error) {
+              temp[i] = [i, data.error[i][0]];
+            }
+            setError(temp);
+          }
         }
       });
     }
   };
   return (
-    <div className="card">
-      <div className="card-body">
-        <h4 className="card-title pb-2 border-bottom">{t("withdraw")}</h4>
-        <form className="pt-3" autoComplete="off" onSubmit={onSubmit}>
-          <Input
-            name={"walletAddress"}
-            value={data?.address}
-            onChange={(v) => onChange("address", v)}
-            error={error?.address}
-          />
-          <Input
-            name={"amount"}
-            value={data?.amount}
-            onChange={(v) => onChange("amount", v)}
-            error={error?.amount}
-            info={
-              <div
-                className="d-flex justify-content-between cursor-pointer"
-                onClick={() => onChange("amount", props.balance)}
-              >
-                <span>{t("withdrawable")}</span>
-                <span>{props.balance}</span>
-              </div>
-            }
-          />
-          <div className="mt-3">
-            <Button
-              loading={loading}
-              className="btn btn-block btn-success btn-lg font-weight-medium auth-form-btn"
+    <>
+      <form autoComplete="off" onSubmit={onSubmit}>
+        <Input
+          name={"address"}
+          value={data?.address}
+          onChange={(v) => onChange("address", v)}
+          error={error?.address}
+        />
+        <Input
+          name={"amount"}
+          value={data?.amount}
+          onChange={(v) => onChange("amount", v)}
+          error={error?.amount}
+          info={
+            <div
+              className="d-flex justify-content-between cursor-pointer"
+              onClick={() => onChange("amount", props.balance)}
             >
-              {t("withdrawRequest")}
-            </Button>
-          </div>
-        </form>
-      </div>
-    </div>
+              <span>{t("withdrawable")}</span>
+              <span>{props.balance}</span>
+            </div>
+          }
+        />
+        <Alert variant="success" show={success}>
+          {t("withdrawSuccess")}
+        </Alert>
+        <Alert variant="danger" show={!!resError}>
+          {t(resError)}
+        </Alert>
+        <div className="mt-3">
+          <Button
+            loading={loading}
+            className="btn btn-block btn-success btn-lg font-weight-medium auth-form-btn"
+          >
+            {t("withdrawRequest")}
+          </Button>
+        </div>
+      </form>
+    </>
   );
 };

@@ -4,10 +4,13 @@ import { t } from "locales";
 import { get } from "library/request";
 import Spinner from "component/spinner";
 import InfoBox from "component/infobox";
-const type = ["danger", "info", "success", "dark", "primary"];
+import exactMath from "exact-math";
+
+const type = ["danger", "info", "success", "light", "primary"];
 export default function () {
   const [plans, setPlans] = useState([]);
   const [coins, setCoins] = useState([]);
+  const [price, setPrice] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [active, setActive] = useState("BTC");
@@ -24,6 +27,11 @@ export default function () {
     get("coins", { cache: true }).then((res) => {
       if (res?.success) {
         setCoins(res.success);
+        const temp = {};
+        for (let i of res.success) {
+          temp[i.name] = i.price;
+        }
+        setPrice(temp);
       }
     });
   }, []);
@@ -42,7 +50,7 @@ export default function () {
                   type="button"
                   onClick={() => setActive(coin.name)}
                   className={
-                    "btn btn-rounded btn-" +
+                    "mb-2 btn btn-rounded btn-" +
                     (active == coin.name ? "primary" : "light")
                   }
                 >
@@ -74,13 +82,18 @@ export default function () {
                         <li>
                           {t("planInvest")}
                           <h4 className="float-left font-weight-bold text-success">
-                            {t(plan.invest)}{" "}
                             <i className="mdi mdi-arrow-up"></i>
+                            {price?.[active]
+                              ? exactMath.round(
+                                  exactMath.div(plan.invest, price[active]),
+                                  -3
+                                )
+                              : price[active]}
                           </h4>
                         </li>
-                        <li>
+                        <li className="d-flex justify-content-between  w-100">
                           {t("planCancelable")}
-                          <span className="float-left font-weight-bold">
+                          <span className="font-weight-bold">
                             <label
                               className={
                                 "badge " +

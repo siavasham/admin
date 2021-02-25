@@ -60,12 +60,12 @@ export default function ({
           {...rest}
         />
       )}
-      {"info" in rest && (
-        <label className="info mt-2 text-info w-100">{rest.info}</label>
-      )}
       <label className="error mt-2 text-danger">
         {typeof error == "object" ? error.map((e) => t(e) + " ") : t(error)}
       </label>
+      {"info" in rest && (
+        <label className="info mt-2 text-info w-100">{rest.info}</label>
+      )}
     </div>
   );
 }

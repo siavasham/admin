@@ -34,13 +34,6 @@
       padding: 0.75rem 0.5rem;
     }
   }
-  .nav-item {
-    margin-right: 1rem;
-    @media (max-width: 767px) {
-      margin-right: 0.25rem;
-      margin-bottom: 0.5rem;
-    }
-  }
 }
 .nav-pills-custom {
   border-bottom: 0;
@@ -86,7 +79,7 @@
 .tab-content {
   border: 1px solid $border-color;
   border-top: 0;
-  padding: 2rem 1rem;
+  padding: 1rem 1rem;
   text-align: justify;
   &.tab-content-custom-pill {
     border: 0;

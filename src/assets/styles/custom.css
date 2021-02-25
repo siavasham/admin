@@ -107,7 +107,7 @@
   mask: url(../images/crypto/BTC.svg) no-repeat center;
 }
 .ETH {
-  background-color: #282828;
+  background-color: #ddd;
   -webkit-mask: url(../images/crypto/ETH.svg) no-repeat center;
   mask: url(../images/crypto/ETH.svg) no-repeat center;
 }

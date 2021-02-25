@@ -123,7 +123,7 @@ export default function () {
           </div>
         </div>
 
-        <div className="col-6 grid-margin">
+        <div className="col-6 grid-margin stretch-card">
           <div className="card">
             <div className="card-body">
               <h4 className="card-title">{t("recentTicket")}</h4>

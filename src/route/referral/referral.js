@@ -31,7 +31,7 @@ export default function () {
   }, []);
   return (
     <div>
-      <Breadcrumb title="referral" icon="mdi-reply" />
+      <Breadcrumb title="referrals" icon="mdi-reply" />
       <InfoBox text={t("referralDesc")} />
       <div className="row">
         <div className="col-12 grid-margin stretch-card">

@@ -44,7 +44,7 @@ export default function () {
           <div
             key={i}
             className={
-              "col-xl-3 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card"
+              "col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card"
             }
           >
             <Coin coin={coin} wallet={wallet?.[coin.name] ?? {}} />
