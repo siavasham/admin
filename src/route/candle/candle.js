@@ -31,8 +31,10 @@ export default function () {
                           type="button"
                           onClick={() => setActive(coin.name)}
                           className={
-                            "btn mb-2 btn-rounded btn-" +
-                            (active == coin.name ? "primary" : "dark")
+                            "mb-2 btn " +
+                            (active == coin.name
+                              ? "btn-outline-danger"
+                              : "btn-outline-light")
                           }
                         >
                           {coin.name}

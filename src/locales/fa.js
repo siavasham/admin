@@ -55,7 +55,7 @@ export default {
   profit: "سود سپرده",
   totalProfit: "مبلغ سود سپرده",
   referral: "دعوت شده ها",
-  totalReferrals: "نفرات دعوت شده",
+  totalReferrals: "سود دعوت شده ها",
   atGlance: "در یک نگاه",
   subject: "موضوع",
   status: "وضعیت",
@@ -63,10 +63,11 @@ export default {
 
   levelOne: "سطح یک",
   balance: "موجودی",
-  freezed: "مسدود شده",
+  freezed: "سپرده",
   withdrawable: "قابل برداشت",
   withdraw: "برداشت",
   deposit: "واریز",
+  deposited: "واریزی",
   address: "آدرس ولت مقصد",
   amount: "مقدار",
   withdrawAndDeposit: "برداشت / واریز",
@@ -76,6 +77,7 @@ export default {
   depositInfo:
     "این ادرس مخصوص کیف پول شما است و بعد از انتقال حساب شما شارژ خواهد شد",
   withdrawSuccess: "درخواست برداشت با موفقیت ثبت شد",
+  noBalanceDoDeposit: "موجودی شما کافی نیست . حساب خود را شارژ کنید",
 
   planType: "نوع پلن",
   planProfit: "سود بازگشتی",
@@ -123,4 +125,7 @@ export default {
   passwordNotMatch: "کلمه عبور با تکرار کلمه عبور مطابقت ندارد",
   successPassword: "کلمه عبور با موفقیت به روز رسانی شد",
   successInfo: "اطلاعات با موفقیت به روز رسانی شد",
+  incAmount: "افزایش موجودی",
+  startInvesting: "سپرده گذاری",
+  inviteFirends: "دعوت از دوستان",
 };

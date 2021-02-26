@@ -241,6 +241,11 @@
   }
 }
 
+.sidebar-icon-only {
+  .menu-icon {
+    font-size: $sidebar-icon-font-big-size !important;
+  }
+}
 /* style for off-canvas menu*/
 @media screen and (max-width: 991px) {
   .sidebar-offcanvas {

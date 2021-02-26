@@ -35,7 +35,7 @@ export default function ({
           id={name}
           name={name}
           type={type}
-          value={value}
+          value={value ?? ""}
           onChange={(e) => onChange(e.target.value)}
           autoComplete="off"
           dir="auto"

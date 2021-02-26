@@ -13,7 +13,7 @@ import Donut from "./donut";
 import exactMath from "exact-math";
 
 const list = [
-  { text: "balance", icon: "mdi-bank", type: "success" },
+  { text: "deposit", icon: "mdi-bank", type: "success" },
   { text: "freezed", icon: "mdi-shield-outline", type: "danger" },
   { text: "profit", icon: "mdi-diamond-outline", type: "success" },
   { text: "referral", icon: "mdi-reply", type: "success" },
@@ -44,20 +44,27 @@ export default function ({ match }) {
   if (loading) return <Spinner forDiv />;
   if (data == null) return null;
 
-  const withdrawable = exactMath.sub(
-    exactMath.add(
-      data?.wallet?.balance ?? 0,
-      data?.wallet?.profit ?? 0,
-      data?.wallet?.referral ?? 0
-    ),
-    data?.wallet?.freezed ?? 0
-  );
+  // const withdrawable = exactMath.sub(
+  //   exactMath.add(
+  //     data?.wallet?.balance ?? 0,
+  //     data?.wallet?.profit ?? 0,
+  //     data?.wallet?.referral ?? 0
+  //   ),
+  //   data?.wallet?.freezed ?? 0
+  // );
 
   return (
     <div>
       <Breadcrumb title={coin} icon="mdi-wallet" />
       <div className="row">
-        <div className="col-lg-7 col-md-7 col-sm-12 grid-margin stretch-card">
+        <div
+          className={
+            " grid-margin stretch-card " +
+            (data?.wallet.balance > 0
+              ? "col-lg-7 col-md-7 col-sm-12"
+              : "col-12")
+          }
+        >
           <div className="card">
             <div className="card-body">
               <Tab.Container defaultActiveKey="deposit">
@@ -81,16 +88,18 @@ export default function ({ match }) {
                     />
                   </Tab.Pane>
                   <Tab.Pane eventKey="withdraw">
-                    <Withdraw coin={coin} balance={withdrawable} />
+                    <Withdraw coin={coin} balance={data?.wallet?.balance} />
                   </Tab.Pane>
                 </Tab.Content>
               </Tab.Container>
             </div>
           </div>
         </div>
-        <div className="col-lg-5 col-md-5 col-sm-12 grid-margin stretch-card">
-          <Donut wallet={data?.wallet} />
-        </div>
+        {data?.wallet.balance > 0 && (
+          <div className="col-lg-5 col-md-5 col-sm-12 grid-margin stretch-card">
+            <Donut wallet={data?.wallet} />
+          </div>
+        )}
         <div className="col-12 grid-margin">
           <div className="card card-statistics">
             <div className="row">

@@ -11,7 +11,7 @@ $green: #46c35f;
 $teal: #58d8a3;
 $cyan: #57c7d4;
 $black: #fff;
-$white: #000;
+$white: #2d2d2d;
 $white-smoke: #f2f7f8;
 $violet: #41478a;
 $darkslategray: #2e383e;
@@ -89,7 +89,7 @@ $social-colors: (
 
 ////////// FONTS//
 
-$type1: "iranyekan", "Ubuntu", sans-serif;
+$type1: "iranyekan", sans-serif;
 $body-background: #1f1e23;
 
 $font-weight-light: 300;
@@ -145,6 +145,7 @@ $sidebar-menu-padding-x: 2.25rem;
 $sidebar-submenu-font-size: 0.8125rem;
 $sidebar-submenu-item-padding: 0.75rem 2rem 0.75rem 2rem;
 
+$sidebar-icon-font-big-size: 1.725rem;
 $sidebar-icon-font-size: 1.125rem;
 $sidebar-arrow-font-size: 0.625rem;
 
@@ -364,8 +365,8 @@ $boxed-layout-bg: #c6c8ca;
 ///////// BOXED LAYOUT ///////
 
 ///////// TICKETS-TAB ///////
-$tab-head-bg: darken(#f2edf3, 2%);
-$accent-color: $white;
+$tab-head-bg: #535253;
+$accent-color: $black;
 ///////// TICKETS-TAB ///////
 
 ///////// LANDING PAGE ///////

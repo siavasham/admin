@@ -37,12 +37,12 @@
   z-index: 5;
   -webkit-animation: 1s fillGraphAnimation ease-in;
   animation: 1s fillGraphAnimation ease-in;
-  transform: rotate(calc(1deg * (var(--percentage) * 1.8)));
+  transform: rotate(calc(1deg * (var(--percentage) * 2.2)));
   box-sizing: border-box;
   cursor: pointer;
 }
 .multi-graph .graph:after {
-  content: attr(dataname) " " counter(varible) "%";
+  content: attr(data) " " counter(varible) "%";
   counter-reset: varible var(--percentage);
   background: #333;
   box-sizing: border-box;
@@ -55,7 +55,7 @@
   top: 0px;
   position: absolute;
   left: 0;
-  transform: rotate(calc(-1deg * var(--percentage) * 1.8))
+  transform: rotate(calc(-1deg * var(--percentage) * 2.2))
     translate(-60px, -20px);
   transition: 0.2s ease-in;
   transform-origin: 0 50% 0;
@@ -160,4 +160,17 @@
 }
 .nowrap {
   white-space: nowrap;
+}
+.form-control:disabled,
+.swal2-modal .swal2-content .swal2-input:disabled,
+.form-control[readonly],
+.swal2-modal .swal2-content .swal2-input[readonly] {
+  background-color: rgba(86, 88, 89, 0.7) !important;
+}
+
+a {
+  color: inherit !important;
+}
+a:hover {
+  text-decoration: none !important;
 }

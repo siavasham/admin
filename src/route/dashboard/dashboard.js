@@ -3,6 +3,10 @@ import Breadcrumb from "component/breadcrumb";
 import { t } from "locales";
 import { post } from "library/request";
 import useStorage from "reducer";
+import { toMoney } from "library/helper";
+import exactMath from "exact-math";
+import { Link } from "react-router-dom";
+import Spinner from "component/spinner";
 
 const types = {
   open: "badge-gradient-success",
@@ -14,17 +18,33 @@ const types = {
 
 export default function () {
   const [tickets, setTickets] = useState([]);
+  const [statistics, setStatistics] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   const {
     setting: { token },
   } = useStorage();
 
   useEffect(() => {
+    setLoading(true);
     post("tickets", { token }, { cache: true }).then((res) => {
       if (res?.success) {
         setTickets(res.success);
       }
     });
+    post("statistics", { token }, { cache: true }).then((res) => {
+      setLoading(false);
+      if (res?.success) {
+        let temp = {};
+        for (let i in res.success) {
+          temp[i] = exactMath.round(res.success[i], 1);
+        }
+        setStatistics(temp);
+      }
+    });
   }, []);
+  let sum = statistics?.deposit + statistics?.profit + statistics?.referral;
+  if (loading) return <Spinner forDiv />;
   return (
     <div>
       <Breadcrumb title="dashboard" icon="mdi-home" />
@@ -41,8 +61,10 @@ export default function () {
                 {t("totalInvest")}{" "}
                 <i className="mdi  mdi-import mdi-24px float-left"></i>
               </h4>
-              <h2 className="mb-5">$ 15,0000</h2>
-              <h6 className="card-text">Increased by 60%</h6>
+              <h2 className="mb-5">$ {toMoney(statistics?.deposit)}</h2>
+              <Link to="/wallet">
+                <h6 className="card-text text-black">{t("incAmount")}</h6>
+              </Link>
             </div>
           </div>
         </div>
@@ -58,8 +80,10 @@ export default function () {
                 {t("totalProfit")}{" "}
                 <i className="mdi mdi-diamond-outline mdi-24px float-left"></i>
               </h4>
-              <h2 className="mb-5">45,6334</h2>
-              <h6 className="card-text">Decreased by 10%</h6>
+              <h2 className="mb-5">$ {toMoney(statistics?.profit)}</h2>
+              <Link to="/plans">
+                <h6 className="card-text text-black">{t("startInvesting")}</h6>
+              </Link>
             </div>
           </div>
         </div>
@@ -75,8 +99,10 @@ export default function () {
                 {t("totalReferrals")}{" "}
                 <i className="mdi mdi-reply mdi-24px float-left"></i>
               </h4>
-              <h2 className="mb-5">9</h2>
-              <h6 className="card-text">Increased by 5%</h6>
+              <h2 className="mb-5">$ {toMoney(statistics?.referral)}</h2>
+              <Link to="/referral">
+                <h6 className="card-text text-black">{t("inviteFirends")}</h6>
+              </Link>
             </div>
           </div>
         </div>
@@ -89,18 +115,33 @@ export default function () {
               <div className="multi-graph mx-auto">
                 <div
                   className="graph"
-                  dataName={t("totalInvest")}
-                  style={{ "--percentage": 100, "--fill": "#198ae3" }}
+                  data={t("totalInvest")}
+                  style={{
+                    "--percentage": Math.round(
+                      (statistics?.deposit / sum) * 100
+                    ),
+                    "--fill": "#b66dff",
+                  }}
                 ></div>
                 <div
                   className="graph"
-                  dataName={t("totalProfit")}
-                  style={{ "--percentage": 30, "--fill": "#00b050" }}
+                  data={t("totalProfit")}
+                  style={{
+                    "--percentage": Math.round(
+                      (statistics?.profit / sum) * 100
+                    ),
+                    "--fill": "#00b050",
+                  }}
                 ></div>
                 <div
                   className="graph"
-                  dataName={t("totalReferrals")}
-                  style={{ "--percentage": 20, "--fill": "#fe7096" }}
+                  data={t("totalReferrals")}
+                  style={{
+                    "--percentage": Math.round(
+                      (statistics?.referral / sum) * 100
+                    ),
+                    "--fill": "#fe7c96",
+                  }}
                 ></div>
               </div>
               <div className="rounded-legend legend-vertical legend-bottom-left pt-4 ">
@@ -138,11 +179,17 @@ export default function () {
                   <tbody>
                     {tickets?.map((ticket, i) => (
                       <tr key={i}>
-                        <td>{ticket.title} </td>
                         <td>
-                          <label className={"badge " + types[ticket.status]}>
-                            {t(ticket.status)}
-                          </label>
+                          <Link to={"ticket/view/" + ticket.id}>
+                            {ticket.title}{" "}
+                          </Link>
+                        </td>
+                        <td>
+                          <Link to={"ticket/view/" + ticket.id}>
+                            <label className={"badge " + types[ticket.status]}>
+                              {t(ticket.status)}
+                            </label>
+                          </Link>
                         </td>
                       </tr>
                     ))}

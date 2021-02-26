@@ -63,11 +63,13 @@
   }
   &.card-img-holder {
     position: relative;
+    z-index: 1;
     .card-img-absolute {
       position: absolute;
       top: 0;
       right: 0;
       height: 100%;
+      z-index: -1;
     }
   }
 }

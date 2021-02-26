@@ -28,7 +28,7 @@ export default (props) => {
     if (data.address.length < 5) {
       temp["address"] = "validation.min";
     }
-    if (data.amount.length < 1) {
+    if (data.amount.length < 1 || data.amount == 0) {
       temp["amount"] = "validation.min";
     }
     for (let i in data) {
@@ -60,7 +60,7 @@ export default (props) => {
     }
   };
   return (
-    <>
+    <div className="auth">
       <form autoComplete="off" onSubmit={onSubmit}>
         <Input
           name={"address"}
@@ -98,6 +98,6 @@ export default (props) => {
           </Button>
         </div>
       </form>
-    </>
+    </div>
   );
 };

@@ -75,6 +75,7 @@ export default function ({ match }) {
               {data?.messages?.length > 0 ? (
                 data?.messages?.map((message, i) => (
                   <div
+                    key={i}
                     className={
                       "card my-2 card-" +
                       (message.user_id == 0 ? "grey" : "info")

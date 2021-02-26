@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Spinner from "component/spinner";
 import { t } from "locales";
-import { post } from "library/request";
 import { toMoney } from "library/helper";
-import Alert from "react-bootstrap/Alert";
 import useStorage from "reducer";
 import { Link } from "react-router-dom";
 import exactMath from "exact-math";
@@ -13,23 +10,6 @@ export default function ({ coin, wallet, onData }) {
     setting: { token },
   } = useStorage();
 
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-
-  const getInfo = () => {
-    setLoading(true);
-    post("address", { coin: coin.name, token }).then((data) => {
-      setLoading(false);
-      if (data.success) {
-        onData(data.success);
-      } else if (data.error) {
-        setError(true);
-        setTimeout(() => {
-          setError(false);
-        }, 5000);
-      }
-    });
-  };
   useEffect(() => {}, []);
   return (
     <div className="card card-statistics">

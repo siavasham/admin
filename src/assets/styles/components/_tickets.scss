@@ -26,7 +26,7 @@
       transition-timing-function: ease-in;
       transition-property: "background", "color";
       margin: 5px 5px;
-
+      color: $accent-color;
       .badge {
         background: theme-color(primary);
         color: $accent-color;

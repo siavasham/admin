@@ -128,10 +128,10 @@ const DonutChart = (props) => {
 
     return (
       <path
+        key={item.data}
         onClick={handleSelect.bind(this, item)}
         onMouseEnter={handleSelect.bind(this, item)}
         className={classSet(classes)}
-        {...props}
         d={d}
       ></path>
     );
@@ -156,7 +156,7 @@ const DonutChart = (props) => {
       classes[className] = true;
     }
 
-    return <path className={classSet(classes)} {...props} d={d}></path>;
+    return <path className={classSet(classes)} d={d}></path>;
   };
 
   const renderEmptyPath = (item, total, startAngle) => {
@@ -175,7 +175,7 @@ const DonutChart = (props) => {
       classes[className] = true;
     }
 
-    return <path className={classSet(classes)} {...props} d={d}></path>;
+    return <path className={classSet(classes)} d={d}></path>;
   };
 
   const getPathData = (

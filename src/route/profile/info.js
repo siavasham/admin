@@ -37,7 +37,7 @@ export default function () {
     });
   };
   return (
-    <div>
+    <div className="auth">
       {loading && <Spinner forDiv />}
 
       <form className="pt-3" autoComplete="off" onSubmit={onSubmit}>

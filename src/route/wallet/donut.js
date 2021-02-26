@@ -4,36 +4,35 @@ import { t } from "locales";
 import exactMath from "exact-math";
 
 const list = [
-  { text: "balance", type: "primary" },
-  { text: "profit", type: "success" },
-  { text: "referral", type: "danger" },
+  { key: "balance", type: "primary", label: "deposited" },
+  { key: "profit", type: "success", label: "profit" },
+  { key: "referral", type: "danger", label: "referral" },
 ];
 export default ({ wallet }) => {
   const handleSelected = (item) => {
     setSelected(item);
   };
-  const allAmount = exactMath.add(
-    wallet?.balance,
-    wallet?.profit,
-    wallet?.referral
-  );
+  const referral = wallet?.referral > 0 ? wallet?.referral : 0.0001;
+  const profit = wallet?.profit ? wallet?.profit : 0.0001;
+  const allAmount = exactMath.add(wallet?.deposit, profit, referral);
+
   const series = [
     {
-      label: t("balance"),
-      value: wallet.referral,
-      data: wallet.balance,
+      label: t("deposited"),
+      value: wallet.deposit,
+      data: wallet.deposit,
       selected: false,
     },
     {
       label: t("profit"),
-      value: wallet.referral,
-      data: wallet.profit,
+      value: profit,
+      data: profit,
       selected: false,
     },
     {
       label: t("referral"),
-      value: wallet.referral,
-      data: wallet.referral,
+      value: referral,
+      data: referral,
       selected: false,
     },
   ];
@@ -66,10 +65,10 @@ export default ({ wallet }) => {
               <li key={i} className="d-flex justify-content-between py-2">
                 <span>
                   <span className={"legend-dots bg-" + item.type}></span>
-                  {t(item.text)}
+                  {t(item.label)}
                 </span>
                 <span className="float-left">
-                  {Math.round((wallet[item.text] / allAmount) * 100)}%
+                  {Math.round((wallet[item.key] / allAmount) * 100)}%
                 </span>
               </li>
             ))}

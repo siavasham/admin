@@ -56,7 +56,7 @@ export default function () {
     }
   };
   return (
-    <div>
+    <div className="auth">
       <form className="pt-3" autoComplete="off" onSubmit={onSubmit}>
         <div className="row">
           <div className="col-12 col-md-6">
