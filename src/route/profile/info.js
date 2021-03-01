@@ -77,7 +77,7 @@ export default function () {
         <div className="mt-3">
           <Button
             loading={submiting}
-            className="btn btn-success btn-lg font-weight-medium"
+            className="btn btn-info btn-lg font-weight-medium"
           >
             {t("update")}
           </Button>

@@ -66,7 +66,7 @@ export default function () {
       <div className="row">
         <div className="col-12 grid-margin stretch-card">
           <div className="card">
-            <div className="card-body">
+            <div className="card-body auth">
               <h4 className="card-title pb-2">{t("addTicket")}</h4>
               <form className="pt-4" autoComplete="off" onSubmit={onSubmit}>
                 <Input
@@ -88,7 +88,7 @@ export default function () {
                 <div className="mt-3">
                   <Button
                     loading={loading}
-                    className="btn btn-success font-weight-medium"
+                    className="btn btn-info font-weight-medium"
                   >
                     {t("submit")}
                   </Button>

@@ -71,13 +71,13 @@ const Login = () => {
                 <div className="mt-3">
                   <Button
                     loading={loading}
-                    className="btn btn-block btn-success btn-lg font-weight-medium auth-form-btn"
+                    className="btn btn-block btn-info btn-lg font-weight-medium auth-form-btn"
                   >
                     {t("recover")}
                   </Button>
                 </div>
                 <div className="text-center mt-4 font-weight-light">
-                  <Link to="/login" className="text-success">
+                  <Link to="/login" className="text-info">
                     {t("login")}
                   </Link>
                 </div>

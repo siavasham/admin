@@ -34,7 +34,7 @@ export default function ({ coin, wallet, onData }) {
         <div className="d-flex mt-5">
           <Link
             to={"wallet/" + coin.name}
-            class="btn btn-outline-primary btn-block"
+            className="btn btn-outline-primary btn-block"
           >
             {t("deposit")} {wallet.balance > 0 && " / " + t("withdraw")}
           </Link>

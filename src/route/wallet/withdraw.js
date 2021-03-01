@@ -92,7 +92,7 @@ export default (props) => {
         <div className="mt-3">
           <Button
             loading={loading}
-            className="btn btn-block btn-success btn-lg font-weight-medium auth-form-btn"
+            className="btn btn-block btn-info btn-lg font-weight-medium auth-form-btn"
           >
             {t("withdrawRequest")}
           </Button>

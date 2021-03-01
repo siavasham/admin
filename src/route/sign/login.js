@@ -87,19 +87,19 @@ const Login = () => {
                 <div className="mt-3">
                   <Button
                     loading={loading}
-                    className="btn btn-block btn-success btn-lg font-weight-medium auth-form-btn"
+                    className="btn btn-block btn-info btn-lg font-weight-medium auth-form-btn"
                   >
                     {t("login")}
                   </Button>
                 </div>
                 <div className="text-center mt-4">
-                  <Link to="/forget" className="text-info">
+                  <Link to="/forget" className="text-danger">
                     {t("forgetPassword")}
                   </Link>
                 </div>
                 <div className="text-center mt-4 font-weight-light">
                   {t("dontHaveAccount")}{" "}
-                  <Link to="/register" className="text-success">
+                  <Link to="/register" className="text-info">
                     {t("createAccount")}
                   </Link>
                 </div>

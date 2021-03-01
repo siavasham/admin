@@ -90,7 +90,7 @@ $social-colors: (
 ////////// FONTS//
 
 $type1: "iranyekan", sans-serif;
-$body-background: #1f1e23;
+$body-background: #1b1a28;
 
 $font-weight-light: 300;
 $font-weight-medium: 500;
@@ -106,7 +106,7 @@ $body-color: #ccc;
 ///////// CARD ////////
 $card-description-color: #ddd;
 $card-title-color: $body-color;
-$card-bg-varient: #2b2c31;
+$card-bg-varient: #232232;
 ///////// CARD ////////
 
 ////////// SIDEBAR ////////
@@ -114,7 +114,7 @@ $sidebar-width-lg: 260px;
 $sidebar-width-mini: 185px;
 $sidebar-width-icon: 70px;
 
-$sidebar-light-bg: #2b2c31;
+$sidebar-light-bg: #232232;
 $sidebar-light-menu-color: #fff;
 $sidebar-light-submenu-color: #888;
 $sidebar-light-menu-active-bg: $white;
@@ -166,7 +166,7 @@ $icon-only-menu-bg-dark: $sidebar-dark-bg;
 ///////// NAVBAR ////////
 
 $navbar-height: 70px;
-$navbar-bg: #2b2c31;
+$navbar-bg: #232232;
 $navbar-menu-color: #fff;
 $navbar-font-size: 0.875rem;
 $navbar-icon-font-size: 1.25rem;
@@ -365,7 +365,7 @@ $boxed-layout-bg: #c6c8ca;
 ///////// BOXED LAYOUT ///////
 
 ///////// TICKETS-TAB ///////
-$tab-head-bg: #535253;
+$tab-head-bg: rgba(123, 120, 123, 0.3);
 $accent-color: $black;
 ///////// TICKETS-TAB ///////
 

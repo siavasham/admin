@@ -70,7 +70,7 @@ export default function ({ match }) {
       <div className="row">
         <div className="col-12 grid-margin stretch-card">
           <div className="card">
-            <div className="card-body">
+            <div className="card-body auth">
               <h4 className="card-title pb-2">{data?.title}</h4>
               {data?.messages?.length > 0 ? (
                 data?.messages?.map((message, i) => (
@@ -107,7 +107,7 @@ export default function ({ match }) {
                   <div className="mt-3">
                     <Button
                       loading={loading}
-                      className="btn btn-success font-weight-medium"
+                      className="btn btn-info font-weight-medium"
                     >
                       {t("submit")}
                     </Button>

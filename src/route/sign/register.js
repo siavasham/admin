@@ -43,22 +43,22 @@ const Register = () => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    if (validate() == null) {
-      setLoading(true);
-      const { name, email, password, referral } = session;
-      post("register", { name, email, password, referral }).then((data) => {
-        setLoading(false);
-        if (data.success) {
-          history.push("/activate");
-        } else if (data.error) {
-          const temp = {};
-          for (let i in data.error) {
-            temp[i] = [i, data.error[i][0]];
-          }
-          setError(temp);
+    // if (validate() == null) {
+    setLoading(true);
+    const { name, email, password, referral = "" } = session;
+    post("register", { name, email, password, referral }).then((data) => {
+      setLoading(false);
+      if (data.success) {
+        history.push("/activate");
+      } else if (data.error) {
+        const temp = {};
+        for (let i in data.error) {
+          temp[i] = [i, data.error[i][0]];
         }
-      });
-    }
+        setError(temp);
+      }
+    });
+    // }
   };
   return (
     <div>
@@ -100,14 +100,14 @@ const Register = () => {
                 <div className="mt-3">
                   <Button
                     loading={loading}
-                    className="btn btn-block btn-success btn-lg font-weight-medium auth-form-btn"
+                    className="btn btn-block btn-info btn-lg font-weight-medium auth-form-btn"
                   >
                     {t("signUp")}
                   </Button>
                 </div>
                 <div className="text-center mt-4 font-weight-light">
                   {t("haveAccount")}{" "}
-                  <Link to="/login" className="text-success">
+                  <Link to="/login" className="text-info">
                     {t("login")}
                   </Link>
                 </div>
