@@ -1,7 +1,7 @@
 import axios from "axios";
 import { setup } from "axios-cache-adapter";
-export const baseUrl = "http://localhost:8000/api/";
-
+// export const baseUrl = "http://localhost:8000/api/";
+export const baseUrl = "https://stronghold.live/api/";
 const axiosBase = setup({
   axios,
   baseURL: baseUrl,

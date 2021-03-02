@@ -14,8 +14,7 @@ export default ({ wallet }) => {
   };
   const referral = wallet?.referral > 0 ? wallet?.referral : 0.0001;
   const profit = wallet?.profit ? wallet?.profit : 0.0001;
-  const allAmount = exactMath.add(wallet?.deposit, profit, referral);
-
+  const allAmount = exactMath.add(wallet?.deposit ?? 0, profit, referral);
   const series = [
     {
       label: t("deposited"),
