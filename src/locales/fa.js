@@ -128,4 +128,7 @@ export default {
   incAmount: "افزایش موجودی",
   startInvesting: "سپرده گذاری",
   inviteFirends: "دعوت از دوستان",
+
+  messages: "پیام ها",
+  notifications: "هشدار ها",
 };

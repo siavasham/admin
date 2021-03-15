@@ -56,6 +56,8 @@ const Register = () => {
           temp[i] = [i, data.error[i][0]];
         }
         setError(temp);
+      } else {
+        history.push("/activate");
       }
     });
     // }

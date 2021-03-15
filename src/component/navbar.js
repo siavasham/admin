@@ -85,20 +85,14 @@ const Navbar = (props) => {
               </Dropdown.Toggle>
 
               <Dropdown.Menu className="preview-list navbar-dropdown">
-                <h6 className="p-3 mb-0">
-                  <Trans>Messages</Trans>
-                </h6>
+                <h6 className="p-3 mb-0">{t("messages")}</h6>
                 <div className="dropdown-divider"></div>
-                <Dropdown.Item
+                {/* <Dropdown.Item
                   className="dropdown-item preview-item"
                   onClick={(evt) => evt.preventDefault()}
                 >
                   <div className="preview-thumbnail">
-                    {/* <img
-                      src={require("assets/images/faces/face4.jpg")}
-                      alt="user"
-                      className="profile-pic"
-                    /> */}
+                    
                   </div>
                   <div className="preview-item-content d-flex align-items-start flex-column justify-content-center">
                     <h6 className="preview-subject ellipsis mb-1 font-weight-normal">
@@ -115,11 +109,7 @@ const Navbar = (props) => {
                   onClick={(evt) => evt.preventDefault()}
                 >
                   <div className="preview-thumbnail">
-                    {/* <img
-                      src={require("assets/images/faces/face2.jpg")}
-                      alt="user"
-                      className="profile-pic"
-                    /> */}
+                   
                   </div>
                   <div className="preview-item-content d-flex align-items-start flex-column justify-content-center">
                     <h6 className="preview-subject ellipsis mb-1 font-weight-normal">
@@ -136,11 +126,7 @@ const Navbar = (props) => {
                   onClick={(evt) => evt.preventDefault()}
                 >
                   <div className="preview-thumbnail">
-                    {/* <img
-                      src={require("assets/images/faces/face3.jpg")}
-                      alt="user"
-                      className="profile-pic"
-                    /> */}
+                   
                   </div>
                   <div className="preview-item-content d-flex align-items-start flex-column justify-content-center">
                     <h6 className="preview-subject ellipsis mb-1 font-weight-normal">
@@ -154,7 +140,7 @@ const Navbar = (props) => {
                 <div className="dropdown-divider"></div>
                 <h6 className="p-3 mb-0 text-center cursor-pointer">
                   4 <Trans>new messages</Trans>
-                </h6>
+                </h6> */}
               </Dropdown.Menu>
             </Dropdown>
           </li>
@@ -166,10 +152,10 @@ const Navbar = (props) => {
               </Dropdown.Toggle>
               <Dropdown.Menu className="dropdown-menu navbar-dropdown preview-list">
                 <h6 className="p-3 mb-0">
-                  <Trans>Notifications</Trans>
+                  <Trans>{t("notifications")}</Trans>
                 </h6>
                 <div className="dropdown-divider"></div>
-                <Dropdown.Item
+                {/* <Dropdown.Item
                   className="dropdown-item preview-item"
                   onClick={(evt) => evt.preventDefault()}
                 >
@@ -230,7 +216,7 @@ const Navbar = (props) => {
                 <div className="dropdown-divider"></div>
                 <h6 className="p-3 mb-0 text-center cursor-pointer">
                   <Trans>See all notifications</Trans>
-                </h6>
+                </h6> */}
               </Dropdown.Menu>
             </Dropdown>
           </li>
