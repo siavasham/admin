@@ -51,6 +51,7 @@ export default {
   recover: "بازیابی",
 
   invest: "سپرده ",
+  investable: "مقدار قابل سپرده گذاری",
   totalInvest: "مبلغ سپرده سرمایه گذاری",
   profit: "سود سپرده",
   totalProfit: "مبلغ سود سپرده",
@@ -79,6 +80,7 @@ export default {
   withdrawSuccess: "درخواست برداشت با موفقیت ثبت شد",
   noBalanceDoDeposit: "موجودی شما کافی نیست . حساب خود را شارژ کنید",
 
+  coinType: "حساب",
   planType: "نوع پلن",
   planProfit: "سود بازگشتی",
   planInvest: "حداقل سپرده",
@@ -127,8 +129,11 @@ export default {
   successInfo: "اطلاعات با موفقیت به روز رسانی شد",
   incAmount: "افزایش موجودی",
   startInvesting: "سپرده گذاری",
+  startInvest: "شروع سپرده گذاری",
   inviteFirends: "دعوت از دوستان",
 
   messages: "پیام ها",
   notifications: "هشدار ها",
+  successInvest: "سپرده گذاری با موفقیت انجام شد",
+  errorInvest: "مشکلی در ثبت سپرده گذاری بوجود آمده است لطفا دوباره تلاش کنید",
 };

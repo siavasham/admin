@@ -5,16 +5,24 @@ import { get, post } from "library/request";
 import Spinner from "component/spinner";
 import InfoBox from "component/infobox";
 import useStorage from "reducer";
-import Detail from "./detail";
+import Input from "component/input";
+import Button from "component/button";
+import Alert from "react-bootstrap/Alert";
+import exactMath from "exact-math";
 
-export default function () {
-  const [plans, setPlans] = useState([]);
-  const [coins, setCoins] = useState([]);
+export default function ({ match }) {
+  const coin = match.params.coin ?? null;
+  const plan = match.params.plan ?? null;
+  const [plans, setPlans] = useState({});
+  const [planData, setPlanData] = useState([]);
   const [wallet, setWallet] = useState({});
-  const [price, setPrice] = useState({});
+  const [walletData, setWalletData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [active, setActive] = useState("BTC");
+  const [data, setData] = useState({ plan, coin });
+  const [submiting, setSubmiting] = useState(false);
+  const [result, setResult] = useState(null);
+
   const {
     setting: { token },
   } = useStorage();
@@ -23,75 +31,142 @@ export default function () {
     setLoading(true);
     get("plans", { cache: true }).then((res) => {
       if (res?.success) {
-        setPlans(res.success);
+        let temp = [];
+        let temp2 = {};
+        for (let i of res.success) {
+          temp.push({
+            key: i.id,
+            val: t(i.type),
+          });
+          temp2[i.id] = i;
+        }
+        setPlans(temp2);
+        setPlanData(temp);
       } else {
         setError(true);
       }
-      setLoading(false);
     });
     post("wallet", { token }).then((res) => {
       if (res?.success) {
-        let temp = {};
-        for (let i of res.success.wallet) {
-          temp[i.coin] = i;
-        }
-        setWallet(temp);
-        setCoins(res.success.coins);
+        let temp = [];
         let temp2 = {};
-        for (let i of res.success.coins) {
-          temp2[i.name] = i.price;
+        for (let i of res.success.wallet) {
+          temp.push({
+            key: i.coin,
+            val: i.coin,
+          });
+          temp2[i.coin] = i;
         }
-        setPrice(temp2);
+        onChange("amount", temp2[data?.coin].balance);
+        setWallet(temp2);
+        setWalletData(temp);
       } else {
         setError(true);
       }
       setLoading(false);
     });
   }, []);
+  const onChange = (name, value) => {
+    setData({ ...data, [name]: value });
+    if (name == "amount") {
+      if (value > wallet[data?.coin]?.balance || value <= 0)
+        setData({ ...data, [name]: wallet[data?.coin]?.balance });
+    }
+  };
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (data?.amount == 0) return;
+    setSubmiting(true);
+    post("investing", { ...data, token }).then((res) => {
+      setSubmiting(null);
+      setResult(res?.success ? "success" : "error");
+    });
+  };
   return (
     <div>
-      <Breadcrumb title="plans" icon="mdi-calculator" />
+      <Breadcrumb title={coin} icon="mdi-calculator" />
       {loading && <Spinner forDiv />}
       {error && <InfoBox title={t("noData")} />}
-      {plans.length > 0 && (
-        <>
-          <InfoBox title={t("pickPlan")} text={t("pickDesc")} />
-          <ul className="nav nav-pills nav-pills-custom">
-            {coins?.map((coin, i) => (
-              <li className="nav-item" key={i}>
-                <button
-                  type="button"
-                  onClick={() => setActive(coin.name)}
-                  className={
-                    "mb-2 btn " +
-                    (active == coin.name
-                      ? "btn-outline-danger"
-                      : "btn-outline-light")
-                  }
-                >
-                  {coin.name}
-                </button>
-              </li>
-            ))}
-          </ul>
-          <div className="row">
-            <div className="col-12">
-              <div className="row pricing-table">
-                {plans.map((plan, i) => (
-                  <Detail
-                    plan={plan}
-                    amount={price?.[active]}
-                    wallet={wallet?.[active] ?? null}
-                    coin={active}
-                    index={i}
-                    key={i}
-                  />
-                ))}
-              </div>
+      <div className="row">
+        <div className="col-12 grid-margin stretch-card">
+          <div className="card">
+            <div className="card-body">
+              <form className="pt-3" autoComplete="off" onSubmit={onSubmit}>
+                <div className="row">
+                  <div className="col-12 col-md-6">
+                    <Input
+                      name={"planType"}
+                      data={planData}
+                      value={data?.plan}
+                      onChange={(v) => onChange("plan", v)}
+                    />
+                  </div>
+                  <div className="col-12 col-md-6">
+                    <Input
+                      name={"coinType"}
+                      data={walletData}
+                      value={data?.coin}
+                      onChange={(v) => onChange("coin", v)}
+                    />
+                  </div>
+                  <div className="col-12 col-md-6">
+                    <Input
+                      name={"amount"}
+                      value={data?.amount}
+                      onChange={(v) => onChange("amount", v)}
+                      info={
+                        <div
+                          className="d-flex justify-content-between cursor-pointer"
+                          onClick={() =>
+                            onChange("amount", wallet[data?.coin]?.balance)
+                          }
+                        >
+                          <span>{t("investable")}</span>
+                          <span>{wallet[data?.coin]?.balance}</span>
+                        </div>
+                      }
+                    />
+                  </div>
+                  <div className="col-12 col-md-6">
+                    <Input
+                      name={"profit"}
+                      value={
+                        data?.amount
+                          ? exactMath.round(
+                              exactMath.div(
+                                exactMath.mul(
+                                  plans?.[data?.plan]?.profit ?? 1,
+                                  data?.amount
+                                ),
+                                100
+                              ),
+                              -6
+                            )
+                          : 0
+                      }
+                      disabled
+                    />
+                  </div>
+                </div>
+                <Alert variant="success" show={result == "success"}>
+                  {t("successInvest")}
+                </Alert>
+                <Alert variant="danger" show={result == "error"}>
+                  {t("errorInvest")}
+                </Alert>
+                <div className="mt-3">
+                  <Button
+                    loading={submiting}
+                    className="btn btn-info btn-lg font-weight-medium"
+                  >
+                    {t("startInvest")}
+                  </Button>
+                </div>
+              </form>
             </div>
           </div>
-        </>
-      )}
+        </div>
+      </div>
     </div>
   );
 }

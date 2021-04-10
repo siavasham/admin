@@ -34,6 +34,11 @@
   background: transparent;
   border-radius: $btn-border-radius;
   color: $black;
+  &:focus,
+  &:active {
+    background: transparent;
+    color: theme-color(secondary);
+  }
 }
 
 select {
@@ -44,6 +49,8 @@ select {
     color: $input-placeholder-color;
     &:focus {
       outline: 1px solid $border-color;
+      color: #369;
+      background-color: transparent;
     }
     @each $color, $value in $theme-colors {
       &.border-#{$color} {

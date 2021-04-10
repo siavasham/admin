@@ -12,6 +12,8 @@
         &:focus,
         &:active {
           border-color: $border-color;
+          background: transparent;
+          color: theme-color(secondary);
         }
       }
     }

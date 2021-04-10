@@ -1,5 +1,6 @@
 import React from "react";
 import { t } from "locales";
+import _ from "lodash";
 
 export default function ({
   type = "text",
@@ -26,8 +27,11 @@ export default function ({
           }
           {...rest}
         >
-          {data.map((val, i) => (
-            <option value={val}> {t(val)}</option>
+          {data.map((d, i) => (
+            <option value={_.isObject(d) ? d.key : d} key={i}>
+              {" "}
+              {_.isObject(d) ? d.val : t(d)}
+            </option>
           ))}
         </select>
       ) : !multiLine ? (

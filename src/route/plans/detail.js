@@ -7,7 +7,7 @@ import { Link, useHistory } from "react-router-dom";
 
 const type = ["danger", "info", "success", "light", "primary"];
 
-export default function ({ plan, amount, wallet, index, coin }) {
+export default function ({ plan, amount = 0, wallet, index, coin }) {
   const [noBalance, setNoBalance] = useState(false);
   const history = useHistory();
   useEffect(() => {
