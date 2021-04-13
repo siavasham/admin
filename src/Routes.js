@@ -15,6 +15,7 @@ const Wallet = lazy(() => import("route/wallet/wallet"));
 const WalletMng = lazy(() => import("route/wallet/manage"));
 const Plans = lazy(() => import("route/plans/plans"));
 const Plan = lazy(() => import("route/plans/plan"));
+const History = lazy(() => import("route/plans/history"));
 const Referral = lazy(() => import("route/referral/referral"));
 const Candle = lazy(() => import("route/candle/candle"));
 const Profile = lazy(() => import("route/profile/profile"));
@@ -33,6 +34,7 @@ const route = {
     { path: "/wallet/:coin", component: WalletMng },
     { path: "/plans", component: Plans },
     { path: "/plans/:coin/:plan", component: Plan },
+    { path: "/history", component: History },
     { path: "/referral", component: Referral },
     { path: "/candle", component: Candle },
     { path: "/ticket", component: Ticket },

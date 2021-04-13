@@ -116,6 +116,14 @@ const Sidebar = (props) => {
           </Link>
         </li>
         <li
+          className={isPathActive("/history") ? "nav-item active" : "nav-item"}
+        >
+          <Link className="nav-link" to="/history">
+            <span className="menu-title">{t("history")}</span>
+            <i className="mdi mdi mdi-history menu-icon"></i>
+          </Link>
+        </li>
+        <li
           className={isPathActive("/referral") ? "nav-item active" : "nav-item"}
         >
           <Link className="nav-link" to="/referral">

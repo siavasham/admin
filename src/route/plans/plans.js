@@ -27,7 +27,6 @@ export default function () {
       } else {
         setError(true);
       }
-      setLoading(false);
     });
     post("wallet", { token }).then((res) => {
       if (res?.success) {

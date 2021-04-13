@@ -3,6 +3,7 @@ export default {
   wallet: "کیف پول",
   transaction: "تراکنش ها",
   plans: "پلن های سرمایه گذاری",
+  history: "پلن های شما",
   referrals: "دعوت از دوستان",
   ticket: "تیکت ها",
   candle: "نمودار قیمت ها",
@@ -80,7 +81,7 @@ export default {
   withdrawSuccess: "درخواست برداشت با موفقیت ثبت شد",
   noBalanceDoDeposit: "موجودی شما کافی نیست . حساب خود را شارژ کنید",
 
-  coinType: "حساب",
+  coinType: "نوع حساب",
   planType: "نوع پلن",
   planProfit: "سود بازگشتی",
   planInvest: "حداقل سپرده",
@@ -108,6 +109,7 @@ export default {
   userName: "نام کاربر",
   invested: "سپرده گذاری کرده",
   joinDate: "تاریخ عضویت",
+  startDate: "تاریخ سپرده گذاری",
 
   addTicket: "افزودن تیکت",
   open: "باز",
