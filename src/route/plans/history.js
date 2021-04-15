@@ -6,6 +6,8 @@ import Spinner from "component/spinner";
 import InfoBox from "component/infobox";
 import useStorage from "reducer";
 import useTimeAgo from "library/timeAgo";
+import Modal from "react-bootstrap/Modal";
+import Button from "component/button";
 
 const type = ["", "danger", "info", "success", "light", "primary"];
 
@@ -13,6 +15,11 @@ export default function () {
   const [invest, setInvest] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const {
     setting: { token },
   } = useStorage();
@@ -119,6 +126,33 @@ export default function () {
           </div>
         </div>
       )}
+      <Button
+        className="btn btn-info btn-lg font-weight-medium"
+        onClick={handleShow}
+      >
+        Launch static backdrop modal
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Body>
+          <div className="share">
+            <div className="invest">
+              <span>{t("totalInvest")}</span>
+              0.2 BTC
+            </div>
+            <div className="profit">
+              <span>{t("profit")}</span>
+              0.1 BTC
+            </div>
+            <div className="user">siavasham</div>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button className="btn btn-info btn-lg font-weight-medium w-100">
+            {t("share")}
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }

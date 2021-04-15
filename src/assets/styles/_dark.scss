@@ -65,7 +65,7 @@ $theme-gradient-colors: (
 $content-bg: transparent;
 $footer-bg: $content-bg;
 $footer-color: color(dark);
-$border-color: #7d7a7a;
+$border-color: #333;
 $circle-border: $white;
 
 ////////// COLOR VARIABLES //////////
@@ -299,11 +299,11 @@ $modal-inner-padding: 0.9375rem;
 $modal-dialog-margin: 10px;
 $modal-dialog-margin-y-sm-up: 30px;
 $modal-title-line-height: $line-height-base;
-$modal-content-bg: #f2f3f7;
+$modal-content-bg: $body-background;
 $modal-content-box-shadow-xs: 0 3px 9px rgba($black, 0.5);
 $modal-content-box-shadow-sm-up: 0 5px 15px rgba($black, 0.5);
 
-$modal-backdrop-bg: $black;
+$modal-backdrop-bg: $white;
 $modal-backdrop-opacity: 0.5;
 
 $modal-header-border-color: $border-color;
@@ -324,7 +324,7 @@ $modal-footer-padding-x: 31px;
 $modal-footer-padding-y: 15px;
 
 $modal-lg: 90%;
-$modal-md: 500px;
+$modal-md: 550px;
 $modal-sm: 300px;
 $modal-transition: transform 0.4s ease;
 
