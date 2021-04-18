@@ -8,17 +8,30 @@ import useStorage from "reducer";
 import useTimeAgo from "library/timeAgo";
 import Modal from "react-bootstrap/Modal";
 import Button from "component/button";
+import * as htmlToImage from "html-to-image";
 
 const type = ["", "danger", "info", "success", "light", "primary"];
 
 export default function () {
+  const {
+    setting: { name },
+  } = useStorage();
   const [invest, setInvest] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [data, setData] = useState(null);
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => setData(null);
+  const share = () => {
+    htmlToImage
+      .toJpeg(document.getElementById("share"), { quality: 0.95 })
+      .then(function (dataUrl) {
+        var link = document.createElement("a");
+        link.download = "stronghold.live-" + name + ".jpeg";
+        link.href = dataUrl;
+        link.click();
+      });
+  };
 
   const {
     setting: { token },
@@ -48,7 +61,11 @@ export default function () {
               <div className="card-body">
                 <h4 className="card-title pb-3">{t("history")}</h4>
                 {invest.map((ref, i) => (
-                  <div className="row tickets-card mx-2" key={i}>
+                  <div
+                    className="row tickets-card mx-2"
+                    key={i}
+                    onClick={() => setData(ref)}
+                  >
                     <div className="col d-flex mt-2 mb-2">
                       <div className="nowrap pl-3">
                         <p className="mb-2 font-weight-medium text-muted">
@@ -106,7 +123,10 @@ export default function () {
                         <p className="mb-2 font-weight-medium text-muted">
                           {t("profit")}
                         </p>
-                        <h4 className="font-weight-semibold mb-0">-</h4>
+                        <h4 className="font-weight-semibold mb-0 text-success">
+                          {" "}
+                          {t(ref.profit)}
+                        </h4>
                       </div>
                     </div>
                     <div className="col d-flex mt-2 mb-2">
@@ -126,29 +146,26 @@ export default function () {
           </div>
         </div>
       )}
-      <Button
-        className="btn btn-info btn-lg font-weight-medium"
-        onClick={handleShow}
-      >
-        Launch static backdrop modal
-      </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={!!data} onHide={handleClose}>
         <Modal.Body>
-          <div className="share">
+          <div className="share" id="share">
             <div className="invest">
               <span>{t("totalInvest")}</span>
-              0.2 BTC
+              {data?.amount} {data?.coin}
             </div>
             <div className="profit">
               <span>{t("profit")}</span>
-              0.1 BTC
+              {data?.profit} {data?.coin}
             </div>
-            <div className="user">siavasham</div>
+            <div className="user">{name}</div>
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button className="btn btn-info btn-lg font-weight-medium w-100">
+          <Button
+            onClick={share}
+            className="btn btn-info btn-lg font-weight-medium w-100"
+          >
             {t("share")}
           </Button>
         </Modal.Footer>

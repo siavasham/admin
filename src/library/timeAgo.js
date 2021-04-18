@@ -8,7 +8,7 @@ import useStorage from "reducer";
 
 export default function useTimeAgo() {
   const {
-    setting: { lang },
+    setting: { lang = "fa" },
   } = useStorage();
   TimeAgo.addLocale(fa);
   TimeAgo.addLocale(en);

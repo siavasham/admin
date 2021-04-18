@@ -68,10 +68,13 @@ export default function ({ match }) {
   }, []);
   const onChange = (name, value) => {
     setData({ ...data, [name]: value });
-    if (name == "amount") {
-      if (value > wallet[data?.coin]?.balance || value <= 0)
-        setData({ ...data, [name]: wallet[data?.coin]?.balance });
+  };
+  const checkAmount = () => {
+    const value = parseFloat(data?.amount);
+    if (value > wallet[data?.coin]?.balance || value <= 0) {
+      value = wallet[data?.coin]?.balance;
     }
+    setData({ ...data, amount: value });
   };
   const onSubmit = (e) => {
     e.preventDefault();
@@ -114,6 +117,7 @@ export default function ({ match }) {
                       name={"amount"}
                       value={data?.amount}
                       onChange={(v) => onChange("amount", v)}
+                      onBlur={checkAmount}
                       info={
                         <div
                           className="d-flex justify-content-between cursor-pointer"
@@ -136,7 +140,7 @@ export default function ({ match }) {
                               exactMath.div(
                                 exactMath.mul(
                                   plans?.[data?.plan]?.profit ?? 1,
-                                  data?.amount
+                                  parseFloat(data?.amount)
                                 ),
                                 100
                               ),

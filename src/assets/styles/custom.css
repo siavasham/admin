@@ -176,8 +176,7 @@ a:hover {
 }
 .share {
   background: url(../images/share.jpg);
-  height: 400px;
-  width: 100%;
+  padding: 37%;
   background-size: cover;
   position: relative;
 }
@@ -186,7 +185,7 @@ a:hover {
   top: 12%;
   left: 0;
   right: 0;
-  font-size: 3em;
+  font-size: 100%;
   text-align: center;
   direction: ltr;
   color: #fff;
@@ -217,7 +216,7 @@ a:hover {
 }
 .user {
   position: absolute;
-  bottom: 14.5%;
+  bottom: 13%;
   left: 0;
   right: 0;
   font-size: 1.7em;
@@ -227,4 +226,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   text-shadow: 0 0 6px #242424;
+}
+.qr-code svg {
+  border-radius: 10px;
 }

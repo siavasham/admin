@@ -15,7 +15,7 @@ export default (props) => {
   return (
     <div className="auth">
       <form autoComplete="off" onSubmit={(e) => e.preventDefault()}>
-        <div className="mb-3 text-center">
+        <div className="mb-3 text-center qr-code">
           <QRCode
             bgColor="#2b2c31"
             fgColor="#ddd"
