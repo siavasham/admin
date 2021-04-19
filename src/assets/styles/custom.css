@@ -182,10 +182,10 @@ a:hover {
 }
 .invest {
   position: absolute;
-  top: 12%;
+  top: 13%;
   left: 0;
   right: 0;
-  font-size: calc(50% + 1vw + 1vh);
+  font-size: 1.6rem;
   text-align: center;
   direction: ltr;
   color: #fff;
@@ -194,15 +194,16 @@ a:hover {
   text-shadow: 0 0 8px #242424;
 }
 .invest span {
-  font-size: calc(5% + 1vw + 1vh);
+  font-size: 0.8rem;
   opacity: 0.7;
+  margin-bottom: 5px;
 }
 .profit {
   position: absolute;
   top: 41%;
   left: 0;
   right: 0;
-  font-size: calc(50% + 1vw + 1vh);
+  font-size: 1.6rem;
   text-align: center;
   direction: ltr;
   color: #61e655;
@@ -211,15 +212,16 @@ a:hover {
   text-shadow: 0 0 8px #867373;
 }
 .profit span {
-  font-size: calc(5% + 1vw + 1vh);
+  font-size: 0.8rem;
   opacity: 0.7;
+  margin-bottom: 5px;
 }
 .user {
   position: absolute;
-  bottom: 12%;
+  bottom: 13%;
   left: 0;
   right: 0;
-  font-size: calc(50% + 1vw + 1vh);
+  font-size: 1.4rem;
   text-align: center;
   direction: ltr;
   color: #fff;
@@ -229,4 +231,30 @@ a:hover {
 }
 .qr-code svg {
   border-radius: 10px;
+}
+
+@media (min-width: 850px) {
+  .invest,
+  .profit {
+    font-size: 1.7rem;
+  }
+  .invest span,
+  .profit span {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .invest,
+  .profit {
+    font-size: 1rem;
+  }
+  .invest span,
+  .profit span {
+    font-size: 0.8rem;
+    margin-bottom: 0px;
+  }
+  .user {
+    font-size: 1rem;
+  }
 }

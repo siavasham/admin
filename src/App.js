@@ -7,6 +7,7 @@ import Navbar from "component/navbar";
 // import SettingsPanel from "app/shared/SettingsPanel";
 import Footer from "component/footer";
 import useStorage from "reducer";
+import { t } from "locales";
 
 const App = (props) => {
   const { setSetting } = useStorage();
@@ -23,6 +24,7 @@ const App = (props) => {
       }
     });
     window.scrollTo(0, 0);
+    document.title = t("title");
   }, []);
   useEffect(() => {
     const body = document.querySelector("body");
